@@ -33,4 +33,10 @@ export default class CourseList extends React.Component {
    });
  }
 
+ createCourse() {
+    console.log("creating course");
+    this.courseServiceClient.createCourse(this.state.course)
+        .then(() => { this.findAllCourses(); });
+ }
+
 )}};
