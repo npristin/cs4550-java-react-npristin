@@ -15,4 +15,17 @@ export default class CourseList extends React.Component {
     this.deleteCourse = this.deleteCourse.bind(this);
  }
 
+ componentDidMount() {
+    this.findAllCourses();
+ }
+
+ findAllCourses() {
+    this.courseServiceClient.findAllCourses()
+        .then((courses) => {
+            this.setState({courses: courses});
+            console.log(courses);
+        });
+ }
+
+
 )}};
