@@ -58,4 +58,14 @@ export default class ModuleList extends Component {
          rows
   )}
 
+  deleteModule(moduleId) {
+      console.log("deleting module " + moduleId);
+      this.moduleServiceClient.deleteModule(moduleId)
+          .then((res) => res.text())
+          .then((text) => text.length ? JSON.parse(text) : {})
+          .catch((error) => {
+             console.log("error deleting module");
+          })
+  }
+
 }
