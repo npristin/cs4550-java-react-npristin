@@ -42,4 +42,11 @@ export default class ModuleServiceClient {
     { return response.json(); })
   }
 
+  deleteModule(moduleId) {
+    return fetch(MODULE_API_URL + '/' + moduleId,
+       {
+           method: 'DELETE'
+       });
+  }
+
 }
