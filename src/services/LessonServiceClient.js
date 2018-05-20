@@ -59,4 +59,13 @@ export default class LessonServiceClient {
      });
   }
 
+  updateLesson(lessonId, lesson) {
+     fetch(LESSON_API_URL + '/' + lessonId, {
+         method: 'put',
+         body: JSON.stringify(lesson),
+         headers: {
+             'content-type': 'application/json'
+         }
+     });
+  }
 }
