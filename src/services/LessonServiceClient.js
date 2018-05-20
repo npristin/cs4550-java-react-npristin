@@ -45,4 +45,11 @@ export default class LessonServiceClient {
     { return response.json(); })
   }
 
+  deleteLesson(lessonId) {
+    return fetch(LESSON_API_URL + '/' + lessonId,
+       {
+           method: 'DELETE'
+       });
+  }
+
 }
