@@ -49,4 +49,11 @@ export default class ModuleServiceClient {
        });
   }
 
+  findModuleById(moduleId) {
+     return fetch(MODULE_API_URL + '/' + moduleId)
+         .then(function (response) {
+             return response.json();
+     });
+  }
+
 }
