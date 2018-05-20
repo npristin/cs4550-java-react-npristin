@@ -44,6 +44,15 @@ class CourseServiceClient {
        });
    }
 
+   updateCourse(courseId, course) {
+       fetch(COURSE_API_URL + '/' + courseId, {
+           method: 'put',
+           body: JSON.stringify(course),
+           headers: {
+               'content-type': 'application/json'
+           }
+       });
+   }
 }
 
 export default CourseServiceClient;
