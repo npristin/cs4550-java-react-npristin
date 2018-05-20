@@ -49,4 +49,13 @@ export default class ModuleList extends Component {
     console.log(event.target.value);
     this.setState({module: {title: event.target.value}});
   }
+
+  renderListOfModules() {
+    var rows = this.state.modules.map((module) => {
+           return <ModuleListItem module={module} key={module.id} delete={this.deleteModule}/>
+     });
+     return (
+         rows
+  )}
+
 }
