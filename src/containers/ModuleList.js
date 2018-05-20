@@ -40,4 +40,9 @@ export default class ModuleList extends Component {
     this.findAllModulesForCourse(newProps.courseId)
   }
 
+  createModule() {
+    console.log(this.state.module);
+    this.moduleServiceClient
+      .createModule(this.props.courseId, this.state.module);
+  }
 }
