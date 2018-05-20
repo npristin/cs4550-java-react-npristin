@@ -45,4 +45,8 @@ export default class ModuleList extends Component {
     this.moduleServiceClient
       .createModule(this.props.courseId, this.state.module);
   }
+  titleChanged(event) {
+    console.log(event.target.value);
+    this.setState({module: {title: event.target.value}});
+  }
 }
