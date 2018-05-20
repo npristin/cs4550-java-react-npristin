@@ -58,5 +58,30 @@ export default class CourseList extends React.Component {
          rows
   )}
 
+ render() {
+   return (
+     <div className="container-fluid">
+        <div className="course-manager-title header">
+          <i className="fa fa-bars"></i>
+          Course Manager
+          <span>
+          <input id="titleFld" placeholder="New Course Title" onChange={this.titleChanged}/>
+          <i className="fa fa-plus create" onClick={this.createCourse}></i>
+          </span>
+        </div>
+       <table className="table">
+         <thead>
+            <tr>
+              <th>Title</th>
+              <th>Owned by</th>
+              <th>Last modified by me</th>
+            </tr>
+         </thead>
+
+         <tbody>
+           {this.courseRows()}
+         </tbody>
+       </table>
+     </div>
 
 )}};
