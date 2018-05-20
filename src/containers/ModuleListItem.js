@@ -13,7 +13,7 @@ export default class ModuleListItem
         {this.props.module.title}
         <span className="float-right">
           <i className="fa fa-times" onClick={() =>
-             {this.props.delete(this.props.course.id)}}>
+             {this.props.delete(this.props.module.id)}}>
           </i>
         </span>
       </li>
