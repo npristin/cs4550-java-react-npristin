@@ -23,4 +23,10 @@ export default class ModuleList extends Component {
   setModules(modules) {
     this.setState({modules: modules})
   }
+  findAllModulesForCourse(courseId) {
+    this.moduleServiceClient
+      .findAllModulesForCourse(courseId)
+      .then((modules) => {this.setModules(modules)});
+  }
+
 }
