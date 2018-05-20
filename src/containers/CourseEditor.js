@@ -14,4 +14,9 @@
      this.findCourseById = this.findCourseById.bind(this);
    }
 
+   componentDidMount() {
+     this.selectCourse(this.props.match.params.courseId);
+     this.findCourseById(this.props.match.params.courseId);
+   }
+
 }
