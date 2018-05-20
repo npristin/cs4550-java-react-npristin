@@ -56,4 +56,13 @@ export default class ModuleServiceClient {
      });
   }
 
+  updateModule(moduleId, module) {
+     fetch(MODULE_API_URL + '/' + moduleId, {
+         method: 'put',
+         body: JSON.stringify(module),
+         headers: {
+             'content-type': 'application/json'
+         }
+     });
+  }
 }
