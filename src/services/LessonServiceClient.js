@@ -23,4 +23,14 @@ export default class LessonServiceClient {
          });
   }
 
+  findAllLessonsForModule(courseId, moduleId) {
+    return fetch(
+      LESSON_CID_MID_API_URL
+        .replace('CID', courseId)
+        .replace('MID', moduleId))
+      .then(function (response) {
+        return response.json();
+      })
+  }
+
 }
