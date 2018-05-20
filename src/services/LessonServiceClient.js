@@ -16,4 +16,11 @@ export default class LessonServiceClient {
     return this[_singleton]
   }
 
+  findAllLessons() {
+     return fetch(LESSON_API_URL)
+         .then(function(response){
+             return response.json();
+         });
+  }
+
 }
