@@ -33,4 +33,16 @@ export default class LessonServiceClient {
       })
   }
 
+  createLesson(courseId, moduleId, lesson) {
+    return fetch(LESSON_CID_MID_API_URL
+        .replace('CID', courseId)
+        .replace('MID', moduleId),
+      {
+        body: JSON.stringify(lesson),
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST'
+      }).then(function (response)
+    { return response.json(); })
+  }
+
 }
