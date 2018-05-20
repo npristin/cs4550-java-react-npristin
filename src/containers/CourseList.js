@@ -50,5 +50,13 @@ export default class CourseList extends React.Component {
         .then(() => { this.findAllCourses(); });
  }
 
+ courseRows() {
+     var rows = this.state.courses.map((course) => {
+           return <CourseRow course={course} key={course.id} delete={this.deleteCourse}/>
+     });
+     return (
+         rows
+  )}
+
 
 )}};
