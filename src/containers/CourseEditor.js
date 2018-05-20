@@ -32,5 +32,9 @@
            });
    }
 
-
-}
+   render() { return(
+     <div>
+       <h2>{this.state.courseTitle}</h2>
+           <ModuleList courseId={this.state.courseId}/>
+    </div>
+);}}
