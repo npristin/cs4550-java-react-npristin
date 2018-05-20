@@ -27,5 +27,10 @@ export default class CourseList extends React.Component {
         });
  }
 
+ titleChanged(event) {
+   this.setState({
+      course: { title: event.target.value }
+   });
+ }
 
 )}};
