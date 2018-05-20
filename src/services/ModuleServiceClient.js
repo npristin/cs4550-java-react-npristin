@@ -16,4 +16,10 @@ export default class ModuleServiceClient {
     return this[_singleton]
   }
 
+  findAllModules() {
+     return fetch(MODULE_API_URL)
+         .then(function(response){
+             return response.json();
+         });
+  }
 }
