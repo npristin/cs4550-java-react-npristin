@@ -52,4 +52,11 @@ export default class LessonServiceClient {
        });
   }
 
+  findLessonById(lessonId) {
+     return fetch(LESSON_API_URL + '/' + lessonId)
+         .then(function (response) {
+             return response.json();
+     });
+  }
+
 }
