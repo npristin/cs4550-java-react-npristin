@@ -35,4 +35,9 @@ export default class ModuleList extends Component {
   componentDidMount() {
     this.setCourseId(this.props.courseId);
   }
+  componentWillReceiveProps(newProps){
+    this.setCourseId(newProps.courseId);
+    this.findAllModulesForCourse(newProps.courseId)
+  }
+
 }
