@@ -32,4 +32,7 @@ export default class ModuleList extends Component {
   setCourseId(courseId) {
     this.setState({courseId: courseId});
   }
+  componentDidMount() {
+    this.setCourseId(this.props.courseId);
+  }
 }
