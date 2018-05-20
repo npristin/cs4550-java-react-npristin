@@ -20,4 +20,7 @@ export default class ModuleList extends Component {
 
     this.moduleServiceClient = ModuleServiceClient.instance;
   }
+  setModules(modules) {
+    this.setState({modules: modules})
+  }
 }
