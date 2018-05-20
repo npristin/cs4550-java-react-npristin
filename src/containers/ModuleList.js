@@ -29,4 +29,7 @@ export default class ModuleList extends Component {
       .then((modules) => {this.setModules(modules)});
   }
 
+  setCourseId(courseId) {
+    this.setState({courseId: courseId});
+  }
 }
