@@ -23,4 +23,14 @@
      this.setState({courseId: courseId});
    }
 
+   findCourseById(courseId) {
+     this.courseServiceClient
+           .findCourseById(courseId)
+           .then((response) => {
+                console.log(response.title);
+                this.setState({courseTitle: response.title});
+           });
+   }
+
+
 }
