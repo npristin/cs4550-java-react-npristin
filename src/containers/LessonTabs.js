@@ -79,7 +79,8 @@ export default class LessonTabs
 
   createLesson() {
       this.lessonServiceClient
-        .createLesson(this.props.courseId, this.state.moduleId, this.state.lesson);
+        .createLesson(this.props.courseId, this.state.moduleId, this.state.lesson)
+        .then(() => { this.findAllLessonsForModule(this.state.courseId, this.state.moduleId); })
   }
 
   deleteLesson(lessonId) {
@@ -95,7 +96,7 @@ export default class LessonTabs
                       .then((text) => text.length ? JSON.parse(text) : {})
                       .catch((error) => {
                          console.log("error deleting course");
-                      })
+                      }).then(() => { this.findAllLessonsForModule(this.state.courseId, this.state.moduleId); })
           },
           {
             label: 'No',
