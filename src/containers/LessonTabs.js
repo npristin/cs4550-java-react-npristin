@@ -100,9 +100,7 @@ export default class LessonTabs
         <i className="fa fa-plus"></i>
       </button>
     <div>
-    <ul className="nav nav-tabs">
        {this.renderListOfLessons()}
-    </ul>
     </div>
     </div>
   );
