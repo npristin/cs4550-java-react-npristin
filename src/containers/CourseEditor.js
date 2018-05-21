@@ -33,8 +33,10 @@
    }
 
    render() { return(
-     <div>
+     <div className="row">
+     <div className="col-4">
        <h2>{this.state.courseTitle}</h2>
            <ModuleList courseId={this.state.courseId}/>
+    </div>
     </div>
 );}}
