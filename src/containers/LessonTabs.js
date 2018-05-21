@@ -1,7 +1,6 @@
 import React from 'react'
 import LessonServiceClient from '../services/LessonServiceClient'
 import LessonTab from '../components/LessonTab'
-import Lesson from '../styles/Lesson.css'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
@@ -107,7 +106,7 @@ export default class LessonTabs
    }
 
   render() { return(
-    <div>
+    <div className="container-fluid">
     <h3> Lessons </h3>
     <div className="addLesson">
     <input onChange={this.titleChanged}

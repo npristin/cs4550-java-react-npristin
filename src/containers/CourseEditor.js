@@ -35,9 +35,11 @@
    render() { return(
      <div className="row">
      <div className="col-6">
+     <div className="container-fluid">
        <h1>{this.state.courseTitle}</h1>
        <h3>Modules</h3>
        <ModuleList courseId={this.state.courseId}/>
+    </div>
     </div>
     </div>
 );}}
