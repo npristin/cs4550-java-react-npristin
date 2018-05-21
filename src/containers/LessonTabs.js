@@ -89,4 +89,22 @@ export default class LessonTabs
           });
    }
 
+  render() { return(
+    <div>
+    <h1> Lessons </h1>
+    <input onChange={this.titleChanged}
+         value={this.state.lesson.title}
+         placeholder="title"
+         className="form-control"/>
+      <button onClick={this.createLesson} className="btn btn-primary btn-block">
+        <i className="fa fa-plus"></i>
+      </button>
+    <div>
+    <ul className="nav nav-tabs">
+       {this.renderListOfLessons()}
+    </ul>
+    </div>
+    </div>
+  );
+ }
 }
