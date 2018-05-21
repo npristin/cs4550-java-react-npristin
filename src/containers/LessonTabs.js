@@ -37,4 +37,8 @@ export default class LessonTabs
      this.findAllLessonsForModule(newProps.courseId, newProps.moduleId)
   }
 
+  selectModule(moduleId) {
+    this.setState({moduleId: moduleId});
+  }
+
 }
