@@ -31,4 +31,10 @@ export default class LessonTabs
      this.selectCourse(this.props.courseId);
   }
 
+  componentWillReceiveProps(newProps){
+     this.selectModule(newProps.moduleId);
+     this.selectCourse(newProps.courseId);
+     this.findAllLessonsForModule(newProps.courseId, newProps.moduleId)
+  }
+
 }
