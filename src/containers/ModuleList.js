@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import ModuleListItem from './ModuleListItem';
 import ModuleServiceClient from '../services/ModuleServiceClient'
-import ModuleEditor from './ModuleEditor'
 
 export default class ModuleList extends Component {
   constructor(props) {
@@ -52,7 +51,7 @@ export default class ModuleList extends Component {
 
   renderListOfModules() {
     var rows = this.state.modules.map((module) => {
-           return <ModuleListItem module={module} key={module.id} delete={this.deleteModule}/>
+           return <ModuleListItem courseId={this.state.courseId} module={module} key={module.id} delete={this.deleteModule}/>
      });
      return (
          rows
@@ -63,6 +62,7 @@ export default class ModuleList extends Component {
       this.moduleServiceClient.deleteModule(moduleId)
           .then((res) => res.text())
           .then((text) => text.length ? JSON.parse(text) : {})
+          .then(() => alert("Successfully deleted module with id: " + moduleId))
           .catch((error) => {
              console.log("error deleting module");
           })
@@ -73,7 +73,6 @@ export default class ModuleList extends Component {
       <div>
           <div className="row">
             <div className="col-4">
-                <h3>Module List for course: {this.state.courseId}</h3>
                 <input onChange={this.titleChanged}
                        value={this.state.module.title}
                        placeholder="title"
@@ -86,11 +85,9 @@ export default class ModuleList extends Component {
                   {this.renderListOfModules()}
                 </ul>
             </div>
-          <div className="col-8">
-          <ModuleEditor/>
-        </div>
         </div>
       </div>
+
     );
   }
 }
