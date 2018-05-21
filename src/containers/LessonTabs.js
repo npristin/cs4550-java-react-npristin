@@ -62,4 +62,16 @@ export default class LessonTabs
     this.setState({lesson: {title: event.target.value}});
   }
 
+  renderListOfLessons() {
+    console.log(this.state.lessons)
+
+    var rows = this.state.lessons.map((lesson) => {
+         return <LessonTab courseId={this.state.courseId} moduleId={this.state.moduleId}
+                    lesson={lesson} key={lesson.id} delete={this.deleteLesson}/>
+     });
+     return (
+         rows
+   )
+ }
+
 }
