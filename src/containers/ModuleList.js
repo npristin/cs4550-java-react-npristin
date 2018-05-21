@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import ModuleListItem from './ModuleListItem';
 import ModuleServiceClient from '../services/ModuleServiceClient'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 export default class ModuleList extends Component {
   constructor(props) {
@@ -57,14 +59,27 @@ export default class ModuleList extends Component {
   )}
 
   deleteModule(moduleId) {
-      console.log("deleting module " + moduleId);
-      this.moduleServiceClient.deleteModule(moduleId)
-          .then((res) => res.text())
-          .then((text) => text.length ? JSON.parse(text) : {})
-          .then(() => alert("Successfully deleted module with id: " + moduleId))
-          .catch((error) => {
-             console.log("error deleting module");
-          })
+    confirmAlert({
+        title: 'Confirm to submit',
+        message: 'Are you sure you want to delete this module?',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () =>
+                this.moduleServiceClient.deleteModule(moduleId)
+                      .then((res) => res.text())
+                      .then((text) => text.length ? JSON.parse(text) : {})
+                      .then(() => alert("Successfully deleted module with id: " + moduleId))
+                      .catch((error) => {
+                         console.log("error deleting module");
+                      })
+          },
+          {
+            label: 'No',
+            onClick: () => console.log('do nothing')
+          }
+        ]
+    })
   }
 
   render() {

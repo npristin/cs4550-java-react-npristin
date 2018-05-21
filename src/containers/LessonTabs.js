@@ -1,6 +1,9 @@
 import React from 'react'
 import LessonServiceClient from '../services/LessonServiceClient'
 import LessonTab from '../components/LessonTab'
+import Lesson from '../styles/Lesson.css'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 export default class LessonTabs
   extends React.Component {
@@ -80,18 +83,32 @@ export default class LessonTabs
   }
 
   deleteLesson(lessonId) {
-      console.log("deleting lesson " + lessonId);
-      this.lessonServiceClient.deleteLesson(lessonId)
-          .then((res) => res.text())
-          .then((text) => text.length ? JSON.parse(text) : {})
-          .catch((error) => {
-             console.log("error deleting course");
-          });
+      confirmAlert({
+        title: 'Confirm to submit',
+        message: 'Are you sure you want to delete this lesson?',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () =>
+                this.lessonServiceClient.deleteLesson(lessonId)
+                      .then((res) => res.text())
+                      .then((text) => text.length ? JSON.parse(text) : {})
+                      .catch((error) => {
+                         console.log("error deleting course");
+                      })
+          },
+          {
+            label: 'No',
+            onClick: () => console.log('do nothing')
+          }
+        ]
+      })
    }
 
   render() { return(
     <div>
     <h1> Lessons </h1>
+    <div className="addLesson">
     <input onChange={this.titleChanged}
          value={this.state.lesson.title}
          placeholder="title"
@@ -99,6 +116,7 @@ export default class LessonTabs
       <button onClick={this.createLesson} className="btn btn-primary btn-block">
         <i className="fa fa-plus"></i>
       </button>
+    </div>
     <div>
        {this.renderListOfLessons()}
     </div>
