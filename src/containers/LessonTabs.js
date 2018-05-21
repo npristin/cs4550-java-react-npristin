@@ -107,7 +107,7 @@ export default class LessonTabs
 
   render() { return(
     <div>
-    <h1> Lessons </h1>
+    <h3> Lessons </h3>
     <div className="addLesson">
     <input onChange={this.titleChanged}
          value={this.state.lesson.title}

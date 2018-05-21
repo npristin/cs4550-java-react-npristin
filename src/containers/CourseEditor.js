@@ -34,9 +34,10 @@
 
    render() { return(
      <div className="row">
-     <div className="col-4">
-       <h2>{this.state.courseTitle}</h2>
-           <ModuleList courseId={this.state.courseId}/>
+     <div className="col-6">
+       <h1>{this.state.courseTitle}</h1>
+       <h3>Modules</h3>
+       <ModuleList courseId={this.state.courseId}/>
     </div>
     </div>
 );}}
