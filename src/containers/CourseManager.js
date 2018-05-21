@@ -17,6 +17,9 @@ export default class CourseManager extends React.Component {
            <Route path="/course/:courseId"
                   component={CourseEditor}>
            </Route>
+           <Route path="/course/:courseId/module/:moduleId"
+                  component={ModuleEditor}>
+           </Route>
          </div>
        </Router>
      )
