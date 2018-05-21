@@ -7,24 +7,36 @@
 
    constructor(props) {
      super(props)
-     this.state = {moduleId: ''};
-    // this.selectModule = this.selectModule.bind(this);
+     this.state = {moduleId: '', courseId: ''};
+     console.log(props);
+     this.selectModule = this.selectModule.bind(this);
+     this.selectCourse = this.selectCourse.bind(this);
    }
 
-//   componentDidMount() {
-//     this.selectModule
-//     (this.props.match.params.moduleId);
-//   }
-//
-//   selectModule(moduleId) {
-//     this.setState({moduleId: moduleId});
-//   }
+   componentDidMount() {
+     this.selectModule(this.props.match.params.moduleId);
+     this.selectCourse(this.props.match.params.courseId);
+   }
+
+   componentWillReceiveProps(newProps) {
+      console.log(newProps)
+      this.selectModule(newProps.match.params.moduleId);
+      this.selectCourse(newProps.match.params.courseId);
+   }
+
+   selectModule(moduleId) {
+     this.setState({moduleId: moduleId});
+   }
+
+   selectCourse(courseId) {
+     this.setState({courseId: courseId});
+   }
 
    render() { return(
      <div>
        <div className="row">
          <div className="col-8">
-           <LessonTabs/>
+           <LessonTabs moduleId={this.state.moduleId} courseId={this.state.courseId}/>
         </div>
       </div>
     </div>

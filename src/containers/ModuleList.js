@@ -40,7 +40,6 @@ export default class ModuleList extends Component {
   }
 
   createModule() {
-    console.log(this.state.module);
     this.moduleServiceClient
       .createModule(this.props.courseId, this.state.module);
   }
@@ -71,21 +70,17 @@ export default class ModuleList extends Component {
   render() {
     return (
       <div>
-          <div className="row">
-            <div className="col-4">
-                <input onChange={this.titleChanged}
-                       value={this.state.module.title}
-                       placeholder="title"
-                       className="form-control"/>
-                <button onClick={this.createModule} className="btn btn-primary btn-block">
-                  <i className="fa fa-plus"></i>
-                </button>
-                <br/>
-                <ul className="list-group">
-                  {this.renderListOfModules()}
-                </ul>
-            </div>
-        </div>
+        <input onChange={this.titleChanged}
+               value={this.state.module.title}
+               placeholder="title"
+               className="form-control"/>
+        <button onClick={this.createModule} className="btn btn-primary btn-block">
+          <i className="fa fa-plus"></i>
+        </button>
+        <br/>
+        <ul className="list-group">
+          {this.renderListOfModules()}
+        </ul>
       </div>
 
     );
