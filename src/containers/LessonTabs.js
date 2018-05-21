@@ -44,4 +44,14 @@ export default class LessonTabs
   selectCourse(courseId) {
     this.setState({courseId: courseId});
   }
+
+  findAllLessonsForModule(courseId, moduleId) {
+      console.log(courseId);
+      console.log(moduleId);
+
+      this.lessonServiceClient
+        .findAllLessonsForModule(courseId, moduleId)
+        .then((lessons) => {this.setLessons(lessons)});
+  }
+
 }
