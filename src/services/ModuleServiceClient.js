@@ -1,7 +1,7 @@
 const MODULE_API_URL =
-  'http://localhost:8080/api/module';
+  'https://cs4550-java-server-npristin.herokuapp.com/api/module';
 const MODULE_CID_API_URL =
-  'http://localhost:8080/api/course/CID/module';
+  'https://cs4550-java-server-npristin.herokuapp.com/api/course/CID/module';
 
 let _singleton = Symbol();
 export default class ModuleServiceClient {

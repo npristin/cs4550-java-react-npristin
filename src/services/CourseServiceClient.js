@@ -1,5 +1,5 @@
 const COURSE_API_URL =
-    'http://localhost:8080/api/course';
+    'https://cs4550-java-server-npristin.herokuapp.com/api/course';
 
 let _singleton = Symbol();
 class CourseServiceClient {

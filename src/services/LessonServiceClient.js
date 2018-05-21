@@ -1,7 +1,7 @@
 const LESSON_API_URL =
-  'http://localhost:8080/api/lesson';
+  'https://cs4550-java-server-npristin.herokuapp.com/api/lesson';
 const LESSON_CID_MID_API_URL =
-  'http://localhost:8080/api/course/CID/module/MID/lesson';
+  'https://cs4550-java-server-npristin.herokuapp.com/api/course/CID/module/MID/lesson';
 
 let _singleton = Symbol();
 export default class LessonServiceClient {
