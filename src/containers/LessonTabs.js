@@ -41,4 +41,7 @@ export default class LessonTabs
     this.setState({moduleId: moduleId});
   }
 
+  selectCourse(courseId) {
+    this.setState({courseId: courseId});
+  }
 }
