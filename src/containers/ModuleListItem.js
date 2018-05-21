@@ -11,16 +11,16 @@ export default class ModuleListItem
 
   render() {
     return (
-    <Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>
       <li className="list-group-item" href="#">
+      <Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>
         {this.props.module.title}
+        </Link>
         <span className="float-right">
           <i className="fa fa-times" onClick={() =>
              {this.props.delete(this.props.module.id)}}>
           </i>
         </span>
       </li>
-    </Link>
     );
   }
 }
