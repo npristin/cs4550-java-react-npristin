@@ -43,7 +43,8 @@ export default class ModuleList extends Component {
 
   createModule() {
     this.moduleServiceClient
-      .createModule(this.props.courseId, this.state.module);
+      .createModule(this.state.courseId, this.state.module)
+      .then(() => { this.findAllModulesForCourse(this.state.courseId); });
   }
   titleChanged(event) {
     console.log(event.target.value);
@@ -72,7 +73,7 @@ export default class ModuleList extends Component {
                       .then(() => alert("Successfully deleted module with id: " + moduleId))
                       .catch((error) => {
                          console.log("error deleting module");
-                      })
+                      }).then(() => { this.findAllModulesForCourse(this.state.courseId); })
           },
           {
             label: 'No',
