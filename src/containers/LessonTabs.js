@@ -54,4 +54,8 @@ export default class LessonTabs
         .then((lessons) => {this.setLessons(lessons)});
   }
 
+  setLessons(lessons) {
+    this.setState({lessons: lessons})
+  }
+
 }
