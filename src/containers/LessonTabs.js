@@ -74,4 +74,9 @@ export default class LessonTabs
    )
  }
 
+  createLesson() {
+      this.lessonServiceClient
+        .createLesson(this.props.courseId, this.state.moduleId, this.state.lesson);
+  }
+
 }
