@@ -79,4 +79,14 @@ export default class LessonTabs
         .createLesson(this.props.courseId, this.state.moduleId, this.state.lesson);
   }
 
+  deleteLesson(lessonId) {
+      console.log("deleting lesson " + lessonId);
+      this.lessonServiceClient.deleteLesson(lessonId)
+          .then((res) => res.text())
+          .then((text) => text.length ? JSON.parse(text) : {})
+          .catch((error) => {
+             console.log("error deleting course");
+          });
+   }
+
 }
