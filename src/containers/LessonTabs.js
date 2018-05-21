@@ -58,4 +58,8 @@ export default class LessonTabs
     this.setState({lessons: lessons})
   }
 
+  titleChanged(event) {
+    this.setState({lesson: {title: event.target.value}});
+  }
+
 }
