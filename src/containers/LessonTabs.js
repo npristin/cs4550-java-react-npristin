@@ -26,4 +26,9 @@ export default class LessonTabs
    this.lessonServiceClient = LessonServiceClient.instance;
  }
 
+  componentDidMount() {
+     this.selectModule(this.props.moduleId);
+     this.selectCourse(this.props.courseId);
+  }
+
 }
