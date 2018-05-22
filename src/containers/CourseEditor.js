@@ -10,17 +10,27 @@
      super(props)
      this.state = {courseId: '', courseTitle: ''};
      this.selectCourse = this.selectCourse.bind(this);
+     this.selectModule = this.selectModule.bind(this);
      this.courseServiceClient = CourseServiceClient.instance;
      this.findCourseById = this.findCourseById.bind(this);
    }
 
    componentDidMount() {
      this.selectCourse(this.props.match.params.courseId);
+     this.selectModule(this.props.match.params.moduleId);
      this.findCourseById(this.props.match.params.courseId);
+   }
+
+   componentWillReceiveProps(newProps) {
+    this.selectModule(newProps.moduleId);
    }
 
    selectCourse(courseId) {
      this.setState({courseId: courseId});
+   }
+
+   selectModule(moduleId) {
+    this.setState({moduleId: moduleId});
    }
 
    findCourseById(courseId) {
@@ -34,12 +44,17 @@
 
    render() { return(
      <div className="row">
-     <div className="col-6">
-     <div className="container-fluid">
-       <h1>{this.state.courseTitle}</h1>
-       <h3>Modules</h3>
-       <ModuleList courseId={this.state.courseId}/>
-    </div>
-    </div>
+        <div className="col-4">
+            <div className="container-fluid">
+                <h1>{this.state.courseTitle}</h1>
+                <h3>Modules</h3>
+                <ModuleList courseId={this.state.courseId}/>
+            </div>
+        </div>
+        <div className="col-8">
+            <div className="container-fluid">
+                <ModuleEditor courseId={this.state.courseId} moduleId={this.props.match.params.moduleId}/>
+            </div>
+        </div>
     </div>
 );}}
