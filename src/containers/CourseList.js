@@ -4,6 +4,8 @@ import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import CourseServiceClient from '../services/CourseServiceClient';
 import CourseRow from "../components/CourseRow";
 import '../styles/CourseList.css'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 export default class CourseList extends React.Component {
   constructor() {
@@ -40,15 +42,29 @@ export default class CourseList extends React.Component {
   }
 
   deleteCourse(courseId) {
-    console.log("deleting course " + courseId);
-    this.courseServiceClient.deleteCourse(courseId)
-      .then((res) => res.text())
-      .then((text) => text.length ? JSON.parse(text) : {})
-      .catch((error) => {
-         console.log("error deleting course");
-      })
-      .then(() => { this.findAllCourses();
-      });
+    confirmAlert({
+      title: 'Confirm to submit',
+      message: 'Are you sure you want to delete this course?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () =>
+            this.courseServiceClient.deleteCourse(courseId)
+              .then((res) => res.text())
+              .then((text) => text.length ? JSON.parse(text) : {})
+              .then(() => alert("Successfully deleted course with id: " + courseId))
+              .catch((error) => {
+                 console.log("error deleting course");
+              })
+              .then(() => { this.findAllCourses();
+              })
+        },
+        {
+          label: 'No',
+          onClick: () => console.log('do nothing')
+        }
+      ]
+    })
   }
 
   courseRows() {

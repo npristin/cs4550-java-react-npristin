@@ -101,8 +101,9 @@ export default class LessonTabs
             this.lessonServiceClient.deleteLesson(lessonId)
               .then((res) => res.text())
               .then((text) => text.length ? JSON.parse(text) : {})
+              .then(() => alert("Successfully deleted lesson with id: " + lessonId))
               .catch((error) => {
-                console.log("error deleting course");
+                console.log("error deleting lesson");
               }).then(() => { this.findAllLessonsForModule(this.state.courseId, this.state.moduleId); })
         },
         {
