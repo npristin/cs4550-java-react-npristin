@@ -8,5 +8,5 @@ Courses Page: [Courses](https://cs4550-s1-2018-react-npristin.herokuapp.com/cour
 
 All other pages can be accessed through the courses page.
 
-## Repository link for Java middle tier
-Java Middle Tier: [Jave Middle Tier](https://github.com/npristin/cs4550-java-server-npristin)
+## Links to Related Github Repositories
+Java Middle Tier (Assignment 1): [Jave Middle Tier](https://github.com/npristin/cs4550-java-server-npristin)
