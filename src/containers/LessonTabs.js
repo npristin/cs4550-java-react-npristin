@@ -3,6 +3,7 @@ import LessonServiceClient from '../services/LessonServiceClient'
 import LessonTab from '../components/LessonTab'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
+import '../styles/LessonTabs.css'
 
 export default class LessonTabs
   extends React.Component {
@@ -112,6 +113,7 @@ export default class LessonTabs
    }
 
   render() { return(
+    <div className="lesson-tabs">
     <div className="container-fluid">
     <h3> Lessons </h3>
     <div className="addLesson">
@@ -127,6 +129,7 @@ export default class LessonTabs
     <ul className="nav nav-tabs">
         {this.renderListOfLessons()}
     </ul>
+    </div>
     </div>
     </div>
   );

@@ -2,6 +2,8 @@
  import ModuleList from './ModuleList'
  import ModuleEditor from './ModuleEditor'
  import CourseServiceClient from '../services/CourseServiceClient'
+ import { Link } from 'react-router-dom'
+ import '../styles/CourseEditor.css'
 
  export default class CourseEditor
    extends React.Component {
@@ -46,7 +48,14 @@
      <div className="row">
         <div className="col-4">
             <div className="container-fluid">
-                <h1>{this.state.courseTitle}</h1>
+                <span>
+                <Link to={`/courses`}>
+                  <i className="fa fa-chevron-left"></i>
+                </Link>
+                <h1>
+                {this.state.courseTitle}
+                </h1>
+                </span>
                 <h3>Modules</h3>
                 <ModuleList courseId={this.state.courseId}/>
             </div>

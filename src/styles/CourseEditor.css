@@ -1,0 +1,12 @@
+h1 {
+    display: inline-block;
+    padding-left: 15px;
+}
+
+.fa-chevron-left {
+    font-size: 25px;
+}
+
+h3 {
+    padding-top: 10px;
+}
