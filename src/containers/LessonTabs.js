@@ -22,6 +22,7 @@ export default class LessonTabs
    this.selectCourse = this.selectCourse.bind(this);
    this.titleChanged = this.titleChanged.bind(this);
    this.renderListOfLessons = this.renderListOfLessons.bind(this);
+   this.findAllLessonsForModule = this.findAllLessonsForModule.bind(this);
    this.createLesson = this.createLesson.bind(this);
    this.deleteLesson = this.deleteLesson.bind(this);
 
@@ -51,9 +52,12 @@ export default class LessonTabs
       console.log(courseId);
       console.log(moduleId);
 
+      if (moduleId != null && courseId != null) {
+      console.log("finding all lessons")
       this.lessonServiceClient
         .findAllLessonsForModule(courseId, moduleId)
         .then((lessons) => {this.setLessons(lessons)});
+        }
   }
 
   setLessons(lessons) {
@@ -67,13 +71,15 @@ export default class LessonTabs
   renderListOfLessons() {
     console.log(this.state.lessons)
 
+    if (this.props.moduleId != null && this.props.courseId != null) {
     var rows = this.state.lessons.map((lesson) => {
-         return <LessonTab courseId={this.state.courseId} moduleId={this.state.moduleId}
+         return <LessonTab courseId={this.props.courseId} moduleId={this.props.moduleId}
                     lesson={lesson} key={lesson.id} delete={this.deleteLesson}/>
      });
      return (
          rows
    )
+   }
  }
 
   createLesson() {
@@ -118,7 +124,7 @@ export default class LessonTabs
       </button>
     </div>
     <div>
-       {this.renderListOfLessons()}
+        {this.renderListOfLessons()}
     </div>
     </div>
   );
