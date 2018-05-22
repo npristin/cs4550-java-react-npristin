@@ -17,10 +17,10 @@ export default class LessonServiceClient {
   }
 
   findAllLessons() {
-     return fetch(LESSON_API_URL)
-         .then(function(response){
-             return response.json();
-         });
+    return fetch(LESSON_API_URL)
+      .then(function(response){
+        return response.json();
+      });
   }
 
   findAllLessonsForModule(courseId, moduleId) {
@@ -36,36 +36,35 @@ export default class LessonServiceClient {
   createLesson(courseId, moduleId, lesson) {
     return fetch(LESSON_CID_MID_API_URL
         .replace('CID', courseId)
-        .replace('MID', moduleId),
-      {
-        body: JSON.stringify(lesson),
-        headers: { 'Content-Type': 'application/json' },
-        method: 'POST'
-      }).then(function (response)
-    { return response.json(); })
+        .replace('MID', moduleId), {
+          body: JSON.stringify(lesson),
+          headers: { 'Content-Type': 'application/json' },
+          method: 'POST'
+        }).then(function (response)
+      { return response.json(); })
   }
 
   deleteLesson(lessonId) {
     return fetch(LESSON_API_URL + '/' + lessonId,
-       {
-           method: 'DELETE'
-       });
+      {
+       method: 'DELETE'
+      });
   }
 
   findLessonById(lessonId) {
      return fetch(LESSON_API_URL + '/' + lessonId)
-         .then(function (response) {
-             return response.json();
+       .then(function (response) {
+        return response.json();
      });
   }
 
   updateLesson(lessonId, lesson) {
-     fetch(LESSON_API_URL + '/' + lessonId, {
-         method: 'put',
-         body: JSON.stringify(lesson),
-         headers: {
-             'content-type': 'application/json'
-         }
-     });
+    fetch(LESSON_API_URL + '/' + lessonId, {
+      method: 'put',
+      body: JSON.stringify(lesson),
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
   }
 }

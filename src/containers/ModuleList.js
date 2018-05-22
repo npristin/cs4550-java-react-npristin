@@ -21,9 +21,11 @@ export default class ModuleList extends Component {
 
     this.moduleServiceClient = ModuleServiceClient.instance;
   }
+
   setModules(modules) {
     this.setState({modules: modules})
   }
+
   findAllModulesForCourse(courseId) {
     this.moduleServiceClient
       .findAllModulesForCourse(courseId)
@@ -33,9 +35,11 @@ export default class ModuleList extends Component {
   setCourseId(courseId) {
     this.setState({courseId: courseId});
   }
+
   componentDidMount() {
     this.setCourseId(this.props.courseId);
   }
+
   componentWillReceiveProps(newProps){
     this.setCourseId(newProps.courseId);
     this.findAllModulesForCourse(newProps.courseId)
@@ -46,6 +50,7 @@ export default class ModuleList extends Component {
       .createModule(this.state.courseId, this.state.module)
       .then(() => { this.findAllModulesForCourse(this.state.courseId); });
   }
+
   titleChanged(event) {
     console.log(event.target.value);
     this.setState({module: {title: event.target.value}});
@@ -54,32 +59,33 @@ export default class ModuleList extends Component {
   renderListOfModules() {
     var rows = this.state.modules.map((module) => {
            return <ModuleListItem courseId={this.state.courseId} module={module} key={module.id} delete={this.deleteModule}/>
-     });
-     return (
-         rows
-  )}
+    });
+    return (
+      rows
+    )
+  }
 
   deleteModule(moduleId) {
     confirmAlert({
-        title: 'Confirm to submit',
-        message: 'Are you sure you want to delete this module?',
-        buttons: [
-          {
-            label: 'Yes',
-            onClick: () =>
-                this.moduleServiceClient.deleteModule(moduleId)
-                      .then((res) => res.text())
-                      .then((text) => text.length ? JSON.parse(text) : {})
-                      .then(() => alert("Successfully deleted module with id: " + moduleId))
-                      .catch((error) => {
-                         console.log("error deleting module");
-                      }).then(() => { this.findAllModulesForCourse(this.state.courseId); })
-          },
-          {
-            label: 'No',
-            onClick: () => console.log('do nothing')
-          }
-        ]
+      title: 'Confirm to submit',
+      message: 'Are you sure you want to delete this module?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () =>
+            this.moduleServiceClient.deleteModule(moduleId)
+              .then((res) => res.text())
+              .then((text) => text.length ? JSON.parse(text) : {})
+              .then(() => alert("Successfully deleted module with id: " + moduleId))
+              .catch((error) => {
+                 console.log("error deleting module");
+              }).then(() => { this.findAllModulesForCourse(this.state.courseId); })
+        },
+        {
+          label: 'No',
+          onClick: () => console.log('do nothing')
+        }
+      ]
     })
   }
 
@@ -87,18 +93,17 @@ export default class ModuleList extends Component {
     return (
       <div>
         <input onChange={this.titleChanged}
-               value={this.state.module.title}
-               placeholder="title"
-               className="form-control"/>
+          value={this.state.module.title}
+          placeholder="title"
+          className="form-control"/>
         <button onClick={this.createModule} className="btn btn-primary btn-block">
           <i className="fa fa-plus"></i>
         </button>
         <br/>
-        <ul className="list-group">
-          {this.renderListOfModules()}
-        </ul>
+          <ul className="list-group">
+            {this.renderListOfModules()}
+          </ul>
       </div>
-
     );
   }
 }

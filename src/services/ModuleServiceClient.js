@@ -17,10 +17,10 @@ export default class ModuleServiceClient {
   }
 
   findAllModules() {
-     return fetch(MODULE_API_URL)
-         .then(function(response){
-             return response.json();
-         });
+    return fetch(MODULE_API_URL)
+      .then(function(response){
+       return response.json();
+      });
   }
 
   findAllModulesForCourse(courseId) {
@@ -33,8 +33,7 @@ export default class ModuleServiceClient {
   }
 
   createModule(courseId, module) {
-    return fetch(MODULE_CID_API_URL.replace('CID', courseId),
-      {
+    return fetch(MODULE_CID_API_URL.replace('CID', courseId), {
         body: JSON.stringify(module),
         headers: { 'Content-Type': 'application/json' },
         method: 'POST'
@@ -44,25 +43,25 @@ export default class ModuleServiceClient {
 
   deleteModule(moduleId) {
     return fetch(MODULE_API_URL + '/' + moduleId,
-       {
-           method: 'DELETE'
-       });
+      {
+        method: 'DELETE'
+      });
   }
 
   findModuleById(moduleId) {
-     return fetch(MODULE_API_URL + '/' + moduleId)
-         .then(function (response) {
-             return response.json();
-     });
+    return fetch(MODULE_API_URL + '/' + moduleId)
+      .then(function (response) {
+        return response.json();
+    });
   }
 
   updateModule(moduleId, module) {
-     fetch(MODULE_API_URL + '/' + moduleId, {
-         method: 'put',
-         body: JSON.stringify(module),
-         headers: {
-             'content-type': 'application/json'
-         }
-     });
+    fetch(MODULE_API_URL + '/' + moduleId, {
+      method: 'put',
+      body: JSON.stringify(module),
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
   }
 }
