@@ -3,7 +3,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import CourseServiceClient from '../services/CourseServiceClient';
 import CourseRow from "../components/CourseRow";
-import '../styles/CourseCard.css'
+import '../styles/CourseList.css'
 
 export default class CourseList extends React.Component {
  constructor() {

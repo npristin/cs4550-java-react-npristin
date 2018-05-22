@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import CourseList from './CourseList';
-import '../styles/CourseCard.css';
 import CourseEditor from './CourseEditor';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 
