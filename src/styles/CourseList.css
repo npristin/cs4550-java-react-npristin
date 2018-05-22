@@ -10,7 +10,8 @@
     margin-left: 20px;
     vertical-align: bottom;
     position: relative;
-    top: 4px
+    top: 4px;
+    cursor: pointer;
 }
 
 .course-manager-title {
