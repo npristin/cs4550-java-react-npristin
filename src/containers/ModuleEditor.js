@@ -7,7 +7,6 @@
    constructor(props) {
      super(props)
      this.state = {moduleId: '', courseId: ''};
-     console.log(props);
      this.selectModule = this.selectModule.bind(this);
      this.selectCourse = this.selectCourse.bind(this);
    }

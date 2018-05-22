@@ -24,7 +24,7 @@
    }
 
    componentWillReceiveProps(newProps) {
-    this.selectModule(newProps.moduleId);
+    this.selectModule(newProps.match.params.moduleId);
    }
 
    selectCourse(courseId) {
@@ -62,7 +62,7 @@
         </div>
         <div className="col-8">
             <div className="container-fluid">
-                <ModuleEditor courseId={this.state.courseId} moduleId={this.props.match.params.moduleId}/>
+                <ModuleEditor courseId={this.state.courseId} moduleId={this.state.moduleId}/>
             </div>
         </div>
     </div>
