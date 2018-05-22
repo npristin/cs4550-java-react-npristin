@@ -14,14 +14,14 @@
    }
 
    componentDidMount() {
-     this.selectModule(this.props.match.params.moduleId);
-     this.selectCourse(this.props.match.params.courseId);
+     this.selectModule(this.props.moduleId);
+     this.selectCourse(this.props.courseId);
    }
 
    componentWillReceiveProps(newProps) {
       console.log(newProps)
-      this.selectModule(newProps.match.params.moduleId);
-      this.selectCourse(newProps.match.params.courseId);
+      this.selectModule(newProps.moduleId);
+      this.selectCourse(newProps.courseId);
    }
 
    selectModule(moduleId) {
