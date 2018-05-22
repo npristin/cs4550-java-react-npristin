@@ -14,7 +14,7 @@ class CourseRow extends React.Component {
         </td>
         <td>me</td>
         <td>
-          {this.props.course.modified}
+          {this.props.course.modified.substr(0, this.props.course.modified.indexOf("T"))}
         </td>
         <td>
           <i className="fa fa-times" onClick={() =>
