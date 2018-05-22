@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ModuleListItem from './ModuleListItem';
+import ModuleListItem from '../components/ModuleListItem';
 import ModuleServiceClient from '../services/ModuleServiceClient'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'

@@ -1,6 +1,5 @@
  import React from 'react'
  import LessonTabs from './LessonTabs'
- import LessonServiceClient from '../services/LessonServiceClient'
 
  export default class ModuleEditor
    extends React.Component {

@@ -124,7 +124,9 @@ export default class LessonTabs
       </button>
     </div>
     <div>
+    <ul className="nav nav-tabs">
         {this.renderListOfLessons()}
+    </ul>
     </div>
     </div>
   );
