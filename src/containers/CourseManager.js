@@ -12,7 +12,7 @@ export default class CourseManager extends React.Component {
           <Route path="/courses"
             component={CourseList}>
           </Route>
-          <Route path="/course/:courseId/module/:moduleId?"
+          <Route path="/course/:courseId/module/:moduleId?/lesson/:lessonId?"
             component={CourseEditor}>
           </Route>
         </div>
