@@ -1,0 +1,9 @@
+.fa-plus-circle {
+  font-size: 40px;
+  color: red;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
