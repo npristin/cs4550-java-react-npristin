@@ -17,7 +17,14 @@ const stateToPropertiesMapper = (state) => ({
   widgets: state.widgets,
   previewMode: state.preview
 })
-
+const dispatcherToPropsMapper
+  = dispatch => ({
+  findAllWidgets: () => actions.findAllWidgets(dispatch),
+  addWidget: () => actions.addWidget(dispatch),
+  save: (lessonId, widgets) => actions.save(dispatch, lessonId, widgets),
+  findAllWidgetsForLesson: (lessonId) => actions.findAllWidgetsForLesson(dispatch, lessonId),
+  preview: () => actions.preview(dispatch)
+})
 const LessonEditor = connect(
   stateToPropertiesMapper,
   dispatcherToPropsMapper)(WidgetList)
