@@ -1,10 +1,18 @@
 import React from 'react'
 import ModuleList from './ModuleList'
 import ModuleEditor from './ModuleEditor'
-import LessonEditor from './LessonEditor'
 import CourseServiceClient from '../services/CourseServiceClient'
 import { Link } from 'react-router-dom'
 import '../styles/CourseEditor.css'
+import {Provider, connect} from 'react-redux'
+import {createStore} from 'redux'
+import {FIND_ALL_WIDGETS, ADD_WIDGET, DELETE_WIDGET, SAVE} from "../constants/WidgetConstants"
+import {WidgetReducer} from "../reducers/WidgetReducer"
+import {WidgetContainer} from '../components/Widget'
+import {findAllWidgets, addWidget, save} from "../actions/WidgetActions"
+import LessonEditor from '../containers/WidgetList'
+
+let store = createStore(WidgetReducer)
 
 export default class CourseEditor
   extends React.Component {
@@ -72,7 +80,9 @@ export default class CourseEditor
         <div className="col-8">
           <div className="container-fluid">
             <ModuleEditor courseId={this.state.courseId} moduleId={this.state.moduleId}/>
-            <LessonEditor courseId={this.state.courseId} moduleId={this.state.moduleId} lessonId={this.state.lessonId}/>
+            <Provider store={store}>
+              <LessonEditor lessonId={this.state.lessonId}/>
+            </Provider>
           </div>
         </div>
       </div>
