@@ -10,10 +10,13 @@ class WidgetList extends Component {
 
     this.props.findAllWidgets()
 
-
   }
 }
 
+const stateToPropertiesMapper = (state) => ({
+  widgets: state.widgets,
+  previewMode: state.preview
+})
 
 const LessonEditor = connect(
   stateToPropertiesMapper,
