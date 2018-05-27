@@ -21,3 +21,13 @@ export const preview = dispatch => (
 export const setLessonId = (dispatch, lessonId) => (
   dispatch({type: constants.SET_LESSON_ID})
 )
+
+export const findAllWidgetsForLesson = (dispatch, lessonId) => {
+  fetch('http://localhost:8080/api/lesson/LID/widget'
+    .replace('LID', lessonId))
+    .then(response => (response.json()))
+    .then(widgets => dispatch({
+      type: constants.FIND_ALL_WIDGETS_FOR_LID,
+      widgets: widgets,
+      lessonId: lessonId}))
+}
