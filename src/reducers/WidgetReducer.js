@@ -20,6 +20,16 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
         })
       }
 
+    case constants.HEADING_SIZE_CHANGED:
+      return {
+        widgets: state.widgets.map(widget => {
+          if(widget.id === action.id) {
+            widget.size = action.size
+          }
+          return Object.assign({}, widget)
+        })
+      }
+
 
     default:
       return state
