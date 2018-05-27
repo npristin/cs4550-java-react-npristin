@@ -1,5 +1,11 @@
 import * as constants from "../constants/WidgetConstants"
 
+export const headingTextChanged = (dispatch, widgetId, newText) => (
+  dispatch({
+    type: constants.HEADING_TEXT_CHANGED,
+    id: widgetId,
+    text: newText})
+)
 
 export const findAllWidgets = dispatch => {
   fetch('http://localhost:8080/api/widget')
