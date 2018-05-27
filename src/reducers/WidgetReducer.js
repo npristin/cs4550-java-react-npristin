@@ -63,7 +63,20 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
           widget.id !== action.id
         ))
       }
-      
+
+    case constants.ADD_WIDGET:
+      return {
+        widgets: [
+          ...state.widgets,
+          {
+            id: state.widgets.length + 10,
+            text: 'New Widget',
+            widgetType: 'Paragraph',
+            size: '2'
+          }
+        ]
+      }
+
     default:
       return state
   }
