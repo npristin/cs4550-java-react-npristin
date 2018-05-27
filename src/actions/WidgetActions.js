@@ -17,3 +17,7 @@ export const save = (dispatch, lessonId, widgets) => (
 export const preview = dispatch => (
   dispatch({type: constants.PREVIEW})
 )
+
+export const setLessonId = (dispatch, lessonId) => (
+  dispatch({type: constants.SET_LESSON_ID})
+)
