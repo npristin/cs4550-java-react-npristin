@@ -30,6 +30,18 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
         })
       }
 
+    case constants.SELECT_WIDGET_TYPE:
+      console.log(action);
+      let newState = {
+        widgets: state.widgets.filter((widget) => {
+          if(widget.id === action.id) {
+            widget.widgetType = action.widgetType
+          }
+          return true;
+        })
+      }
+      return JSON.parse(JSON.stringify(newState))
+
 
     default:
       return state
