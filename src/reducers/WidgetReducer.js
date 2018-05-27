@@ -42,6 +42,16 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
       }
       return JSON.parse(JSON.stringify(newState))
 
+    case constants.SAVE:
+      fetch('http://localhost:8080/api/lesson/LID/widget/save'
+        .replace('LID', action.lessonId), {
+        method: 'post',
+        body: JSON.stringify(state.widgets),
+        headers: {
+          'content-type': 'application/json'}
+      })
+      return state
+      
 
     default:
       return state
