@@ -11,3 +11,6 @@ export const findAllWidgets = dispatch => {
 export const addWidget = dispatch => (
   dispatch({type: constants.ADD_WIDGET})
 )
+export const save = (dispatch, lessonId, widgets) => (
+  dispatch({type: constants.SAVE, lessonId: lessonId, widgets: widgets})
+)
