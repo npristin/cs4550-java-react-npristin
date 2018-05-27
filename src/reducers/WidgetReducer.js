@@ -58,6 +58,10 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
       return newState
 
     case constants.DELETE_WIDGET:
+      fetch('http://localhost:8080/api/widget/' + action.id,
+       {
+        method: 'delete'
+       })
       return {
         widgets: state.widgets.filter(widget => (
           widget.id !== action.id
