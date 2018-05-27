@@ -82,6 +82,10 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
       newState.widgets = action.widgets
       return newState
 
+    case constants.SET_LESSON_ID:
+      newState = Object.assign({}, state)
+      newState.lessonId = action.lessonId
+      return newState
 
     default:
       return state
