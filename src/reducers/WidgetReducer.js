@@ -10,6 +10,17 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
         preview: !state.preview
       }
 
+    case constants.HEADING_TEXT_CHANGED:
+      return {
+        widgets: state.widgets.map(widget => {
+          if(widget.id === action.id) {
+            widget.text = action.text
+          }
+          return Object.assign({}, widget)
+        })
+      }
+
+
     default:
       return state
   }
