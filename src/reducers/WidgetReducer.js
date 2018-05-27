@@ -57,7 +57,13 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
       newState.widgets = action.widgets
       return newState
 
-    
+    case constants.DELETE_WIDGET:
+      return {
+        widgets: state.widgets.filter(widget => (
+          widget.id !== action.id
+        ))
+      }
+      
     default:
       return state
   }
