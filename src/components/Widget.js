@@ -1,6 +1,6 @@
 import React from  'react'
 import {connect} from 'react-redux'
-import {DELETE_WIDGET} from "../constants/WidgetConstants"
+import {DELETE_WIDGET, INCREMENT_ORDER} from "../constants/WidgetConstants"
 import * as actions from '../actions/WidgetActions'
 import '../styles/Widget.css';
 
@@ -153,7 +153,9 @@ const Widget = ({widget, preview, dispatch}) => {
         <option>Link</option>
       </select>
 
-      <i className="fa fa-chevron-up"></i>
+      <i className="fa fa-chevron-up" onClick={e => (
+        dispatch({type: INCREMENT_ORDER, id: widget.id})
+      )}></i>
       <i className="fa fa-chevron-down"></i>
       <i className="fa fa-times fa-2x deleteWidget" onClick={e => (
         dispatch({type: DELETE_WIDGET, id: widget.id})
