@@ -62,7 +62,9 @@ export const paragraphTextChanged = (dispatch, widgetId, newText) => (
 )
 
 export const findAllWidgets = dispatch => {
-  fetch('http://localhost:8080/api/widget')
+  fetch('https://cs4550-java-server-npristin.herokuapp.com/api/widget', {
+    credentials: 'same-origin'
+  })
     .then(response => (response.json()))
     .then(widgets => dispatch({
       type: constants.FIND_ALL_WIDGETS,
@@ -83,8 +85,10 @@ export const setLessonId = (dispatch, lessonId) => (
 )
 
 export const findAllWidgetsForLesson = (dispatch, lessonId) => {
-  fetch('http://localhost:8080/api/lesson/LID/widget'
-    .replace('LID', lessonId))
+  fetch('https://cs4550-java-server-npristin.herokuapp.com/api/lesson/LID/widget'
+    .replace('LID', lessonId), {
+      credentials: 'same-origin'
+    })
     .then(response => (response.json()))
     .then(widgets => dispatch({
       type: constants.FIND_ALL_WIDGETS_FOR_LID,

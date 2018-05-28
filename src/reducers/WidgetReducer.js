@@ -104,9 +104,10 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
       return JSON.parse(JSON.stringify(newState))
 
     case constants.SAVE:
-      fetch('http://localhost:8080/api/lesson/LID/widget/save'
+      fetch('https://cs4550-java-server-npristin.herokuapp.com/api/lesson/LID/widget/save'
         .replace('LID', action.lessonId), {
         method: 'post',
+        credentials: 'same-origin',
         body: JSON.stringify(state.widgets),
         headers: {
           'content-type': 'application/json'}
@@ -119,9 +120,10 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
       return newState
 
     case constants.DELETE_WIDGET:
-      fetch('http://localhost:8080/api/widget/' + action.id,
+      fetch('https://cs4550-java-server-npristin.herokuapp.com/api/widget/' + action.id,
        {
-        method: 'delete'
+        method: 'delete',
+        credentials: 'same-origin',
        })
       return {
         widgets: state.widgets.filter(widget => (
