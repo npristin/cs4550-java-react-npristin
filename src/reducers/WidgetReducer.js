@@ -40,8 +40,17 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
         })
       }
 
-    
+    case constants.LIST_TYPE_CHANGED:
+      return {
+        widgets: state.widgets.map(widget => {
+          if(widget.id === action.id) {
+            widget.list_type = action.list_type
+          }
+          return Object.assign({}, widget)
+        })
+      }
 
+    
     case constants.SELECT_WIDGET_TYPE:
       console.log(action);
       let newState = {
