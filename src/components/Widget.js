@@ -31,18 +31,49 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged}) => {
   )
 }
 
+const List = ({widget, preview, listTextChanged, listTypeChanged}) => {
+  let selectElem
+  let inputElem
+
+  return(
+  <div>
+    <div hidden={preview}>
+      <h2> List Widget </h2>
+        <li>
+        <select onChange={() => listTypeChanged(widget.id, selectElem.value)}
+                value={widget.list_type}
+                ref={node => selectElem = node}>
+          <option value="Unordered List">Unordered List</option>
+          <option value="Ordered List">Ordered List</option>
+        </select>
+        <input onChange={() => listTextChanged(widget.id, inputElem.value)}
+               value={widget.list_items}
+               ref={node => inputElem = node}/> </li>
+
+        <h3>Preview</h3>
+    </div>
+    {<li>{widget.text}</li>}
+  </div>
+  )
+}
+
 
 const dispathToPropsMapper = dispatch => ({
   headingTextChanged: (widgetId, newText) =>
     actions.headingTextChanged(dispatch, widgetId, newText),
   headingSizeChanged: (widgetId, newSize) =>
     actions.headingSizeChanged(dispatch, widgetId, newSize),
+  listTextChanged: (widgetId, newText) =>
+    actions.listTextChanged(dispatch, widgetId, newText),
+  listTypeChanged: (widgetId, newType) =>
+    actions.listTypeChanged(dispatch, widgetId, newType),
 
 })
 const stateToPropsMapper = state => ({
   preview: state.preview
 })
 const HeadingContainer = connect(stateToPropsMapper, dispathToPropsMapper)(Heading)
+const ListContainer = connect(stateToPropsMapper, dispathToPropsMapper)(List)
 
 
 const Widget = ({widget, preview, dispatch}) => {
