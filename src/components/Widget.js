@@ -8,20 +8,23 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged}) => {
   let selectElem
   let inputElem
   return(
-    <div>
+    <div className="container-fluid">
       <div hidden={preview}>
         <h2> Heading Widget </h2>
-          <select onChange={() => headingSizeChanged(widget.id, selectElem.value)}
+          <select className="form-control"
+                  onChange={() => headingSizeChanged(widget.id, selectElem.value)}
                   value={widget.size}
                   ref={node => selectElem = node}>
             <option value="1">Heading 1</option>
             <option value="2">Heading 2</option>
             <option value="3">Heading 3</option>
           </select>
-          <div>
-          <input onChange={() => headingTextChanged(widget.id, inputElem.value)}
-               value={widget.text}
-               ref={node => inputElem = node}/>
+          <div className="text-area">
+          <input className="form-control"
+                 placeholder="Enter your heading here"
+                 onChange={() => headingTextChanged(widget.id, inputElem.value)}
+                 value={widget.text}
+                 ref={node => inputElem = node}/>
           </div>
           <h3>Preview</h3>
       </div>
@@ -37,25 +40,30 @@ const List = ({widget, preview, listTextChanged, listTypeChanged}) => {
   let inputElem
 
   return(
-  <div>
+  <div className="container-fluid">
     <div hidden={preview}>
       <h2> List Widget </h2>
-      <select onChange={() => listTypeChanged(widget.id, selectElem.value)}
+      <select className="form-control"
+              onChange={() => listTypeChanged(widget.id, selectElem.value)}
               value={widget.listType}
               ref={node => selectElem = node}>
         <option value="unordered">Unordered List</option>
         <option value="ordered">Ordered List</option>
       </select>
-      <div>
-      <textarea onChange={() => listTextChanged(widget.id, inputElem.value)}
+      <div className="text-area">
+      <textarea className="form-control"
+              placeholder="Put each \n item in \n a separate row"
+              onChange={() => listTextChanged(widget.id, inputElem.value)}
               value={widget.listItems}
               ref={node => inputElem = node}>
       </textarea>
       </div>
       <h3>Preview</h3>
     </div>
+    <div className="list-items">
     {(widget.listItems.split("\n")).map(item =>
       <li>{item}</li>)}
+    </div>
   </div>
   )
 }
@@ -64,10 +72,12 @@ const Image = ({widget, preview, imageTextChanged}) => {
   let inputElem
 
   return(
-    <div>
+    <div className="container-fluid">
       <div hidden={preview}>
         <h2> Image Widget </h2>
-          <input onChange={() => imageTextChanged(widget.id, inputElem.value)}
+          <input className="form-control"
+                 placeholder="Enter the image URL here"
+                 onChange={() => imageTextChanged(widget.id, inputElem.value)}
                  value={widget.src}
                  ref={node => inputElem = node}/>
           <h3>Preview</h3>
@@ -82,15 +92,20 @@ const Link = ({widget, preview, linkHrefChanged, linkNameChanged}) => {
   let nameInputElem
 
   return(
-    <div>
+    <div className="container-fluid">
       <div hidden={preview}>
         <h2> Link Widget </h2>
-          <input placeholder="privetik" onChange={() => linkHrefChanged(widget.id, linkInputElem.value)}
+          <input className="form-control"
+                 placeholder="Enter link here" onChange={() => linkHrefChanged(widget.id, linkInputElem.value)}
                  value={widget.href}
                  ref={node => linkInputElem = node}/>
-          <input onChange={() => linkNameChanged(widget.id, nameInputElem.value)}
+          <div className="text-area">
+          <input className="form-control"
+                 placeholder="Enter the hyperlink name here"
+                 onChange={() => linkNameChanged(widget.id, nameInputElem.value)}
                  value={widget.text}
                  ref={node => nameInputElem = node}/>
+          </div>
           <h3>Preview</h3>
       </div>
         <a href={widget.href}>{widget.text}</a>
@@ -102,13 +117,15 @@ const Paragraph = ({widget, preview, paragraphTextChanged}) => {
   let inputElem
 
   return(
-    <div>
+    <div className="container-fluid">
       <div hidden={preview}>
         <h2>Paragraph Widget</h2>
-          <textarea placeholder="Add your paragraph text here"
+          <textarea className="form-control"
+                 placeholder="Add your paragraph text here"
                  onChange={() => paragraphTextChanged(widget.id, inputElem.value)}
                  value={widget.text}
-                 ref={node => inputElem = node}/>
+                 ref={node => inputElem = node}>
+          </textarea>
           <h3>Preview</h3>
       </div>
         <p>{widget.text}</p>
@@ -133,7 +150,7 @@ const dispathToPropsMapper = dispatch => ({
   linkNameChanged: (widgetId, newName) =>
     actions.linkNameChanged(dispatch, widgetId, newName),
   paragraphTextChanged: (widgetId, newText) =>
-    actions.paragraphTextChanged(dispatch, widgetId. newText)
+    actions.paragraphTextChanged(dispatch, widgetId, newText)
 })
 const stateToPropsMapper = state => ({
   preview: state.preview
@@ -149,7 +166,8 @@ const Widget = ({widget, preview, dispatch}) => {
   return(
     <div>
       <div hidden={preview} className="widget-heading">
-      <select value={widget.className}
+      <select
+              value={widget.className}
               onChange={e =>
           dispatch({
             type: 'SELECT_WIDGET_TYPE',
