@@ -83,7 +83,7 @@ export default class CourseEditor
             {this.state.lessonId ?
               <Provider store={store}>
                 <LessonEditor lessonId={this.state.lessonId}/>
-              </Provider> : null}
+              </Provider> : <h1>Select a lesson to create widgets!</h1>}
           </div>
         </div>
       </div>
