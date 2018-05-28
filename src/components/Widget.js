@@ -57,6 +57,22 @@ const List = ({widget, preview, listTextChanged, listTypeChanged}) => {
   )
 }
 
+const Image = ({widget, preview, imageTextChanged}) => {
+  let inputElem
+
+  return(
+    <div>
+      <div hidden={preview}>
+        <h2> Image Widget </h2>
+          <input onChange={() => imageTextChanged(widget.id, inputElem.value)}
+                 value={widget.src}
+                 ref={node => inputElem = node}/>
+          <h3>Preview</h3>
+      </div>
+        <img src={widget.src}/>
+    </div>
+  )
+}
 
 const dispathToPropsMapper = dispatch => ({
   headingTextChanged: (widgetId, newText) =>
@@ -67,6 +83,8 @@ const dispathToPropsMapper = dispatch => ({
     actions.listTextChanged(dispatch, widgetId, newText),
   listTypeChanged: (widgetId, newType) =>
     actions.listTypeChanged(dispatch, widgetId, newType),
+  imageTextChanged: (widgetId, newSrc) =>
+    actions.imageTextChanged(dispatch, widgetId, newSrc),
 
 })
 const stateToPropsMapper = state => ({
@@ -74,7 +92,7 @@ const stateToPropsMapper = state => ({
 })
 const HeadingContainer = connect(stateToPropsMapper, dispathToPropsMapper)(Heading)
 const ListContainer = connect(stateToPropsMapper, dispathToPropsMapper)(List)
-
+const ImageContainer = connect(stateToPropsMapper, dispathToPropsMapper)(Image)
 
 const Widget = ({widget, preview, dispatch}) => {
   let selectElement
