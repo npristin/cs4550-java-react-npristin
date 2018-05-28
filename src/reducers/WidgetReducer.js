@@ -50,7 +50,17 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
         })
       }
 
-    
+    case constants.IMAGE_SRC_CHANGE:
+      return {
+        widgets: state.widgets.map(widget => {
+        if(widget.id === action.id) {
+          widget.src = action.src
+        }
+        return Object.assign({}, widget)
+        })
+      }
+
+
     case constants.SELECT_WIDGET_TYPE:
       console.log(action);
       let newState = {
