@@ -29,6 +29,13 @@ export const listTypeChanged = (dispatch, widgetId, newType) => (
   })
 )
 
+export const imageTextChanged = (dispatch, widgetId, newSrc) => (
+  dispatch({
+    type: constants.IMAGE_SRC_CHANGE,
+    id: widgetId,
+    src: newSrc
+  })
+)
 
 
 export const findAllWidgets = dispatch => {
