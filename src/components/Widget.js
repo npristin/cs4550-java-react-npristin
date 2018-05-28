@@ -61,8 +61,8 @@ const List = ({widget, preview, listTextChanged, listTypeChanged}) => {
       <h3>Preview</h3>
     </div>
     <div className="list-items">
-    {(widget.listItems.split("\n")).map(item =>
-      <li>{item}</li>)}
+    {widget.listItems ? (widget.listItems.split("\n")).map(item =>
+      <li>{item}</li>) : null}
     </div>
   </div>
   )
