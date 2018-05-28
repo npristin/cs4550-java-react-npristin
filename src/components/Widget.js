@@ -21,7 +21,7 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged}) => {
           </select>
           <div className="text-area">
           <input className="form-control"
-                 placeholder="Enter your heading here"
+                 placeholder="Heading text"
                  onChange={() => headingTextChanged(widget.id, inputElem.value)}
                  value={widget.text}
                  ref={node => inputElem = node}/>
@@ -52,7 +52,7 @@ const List = ({widget, preview, listTextChanged, listTypeChanged}) => {
       </select>
       <div className="text-area">
       <textarea className="form-control"
-              placeholder="Put each \n item in \n a separate row"
+              placeholder="Enter one list item per line"
               onChange={() => listTextChanged(widget.id, inputElem.value)}
               value={widget.listItems}
               ref={node => inputElem = node}>
@@ -76,7 +76,7 @@ const Image = ({widget, preview, imageTextChanged}) => {
       <div hidden={preview}>
         <h2> Image Widget </h2>
           <input className="form-control"
-                 placeholder="Enter the image URL here"
+                 placeholder="Image URL"
                  onChange={() => imageTextChanged(widget.id, inputElem.value)}
                  value={widget.src}
                  ref={node => inputElem = node}/>
@@ -96,12 +96,12 @@ const Link = ({widget, preview, linkHrefChanged, linkNameChanged}) => {
       <div hidden={preview}>
         <h2> Link Widget </h2>
           <input className="form-control"
-                 placeholder="Enter link here" onChange={() => linkHrefChanged(widget.id, linkInputElem.value)}
+                 placeholder="Link URL" onChange={() => linkHrefChanged(widget.id, linkInputElem.value)}
                  value={widget.href}
                  ref={node => linkInputElem = node}/>
           <div className="text-area">
           <input className="form-control"
-                 placeholder="Enter the hyperlink name here"
+                 placeholder="Link text"
                  onChange={() => linkNameChanged(widget.id, nameInputElem.value)}
                  value={widget.text}
                  ref={node => nameInputElem = node}/>
@@ -121,7 +121,7 @@ const Paragraph = ({widget, preview, paragraphTextChanged}) => {
       <div hidden={preview}>
         <h2>Paragraph Widget</h2>
           <textarea className="form-control"
-                 placeholder="Add your paragraph text here"
+                 placeholder="Paragraph text"
                  onChange={() => paragraphTextChanged(widget.id, inputElem.value)}
                  value={widget.text}
                  ref={node => inputElem = node}>
