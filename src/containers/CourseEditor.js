@@ -80,9 +80,10 @@ export default class CourseEditor
         <div className="col-8">
           <div className="container-fluid">
             <ModuleEditor courseId={this.state.courseId} moduleId={this.state.moduleId}/>
-            <Provider store={store}>
-              <LessonEditor lessonId={this.state.lessonId}/>
-            </Provider>
+            {this.state.lessonId ?
+              <Provider store={store}>
+                <LessonEditor lessonId={this.state.lessonId}/>
+              </Provider> : null}
           </div>
         </div>
       </div>
