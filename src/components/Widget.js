@@ -99,6 +99,7 @@ const Paragraph = ({widget, preview, paragraphTextChanged}) => {
       <div hidden={preview}>
         <h2>Paragraph Widget</h2>
           <input onChange={() => paragraphTextChanged(widget.id, inputElem.value)}
+                 value={widget.text}
                  ref={node => inputElem = node}/>
           <h3>Preview</h3>
       </div>
@@ -109,6 +110,7 @@ const Paragraph = ({widget, preview, paragraphTextChanged}) => {
 
 const dispathToPropsMapper = dispatch => ({
   headingTextChanged: (widgetId, newText) =>
+
     actions.headingTextChanged(dispatch, widgetId, newText),
   headingSizeChanged: (widgetId, newSize) =>
     actions.headingSizeChanged(dispatch, widgetId, newSize),
@@ -135,11 +137,9 @@ const ParagraphContainer = connect(stateToPropsMapper, dispathToPropsMapper)(Par
 const Widget = ({widget, preview, dispatch}) => {
   let selectElement
   return(
-    <li>
+    <div>
       <div hidden={preview}>
-      {widget.text} {widget.widgetType}
-
-      <select value={widget.widgetType}
+      <select value={widget.className}
               onChange={e =>
           dispatch({
             type: 'SELECT_WIDGET_TYPE',
@@ -166,7 +166,7 @@ const Widget = ({widget, preview, dispatch}) => {
         {widget.className==='Image' && <ImageContainer widget={widget}/>}
         {widget.className==='Link' && <LinkContainer widget={widget}/>}
       </div>
-    </li>
+    </div>
   )
 }
 const WidgetContainer = connect(state => ({
