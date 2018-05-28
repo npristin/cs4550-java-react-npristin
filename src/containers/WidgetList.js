@@ -15,7 +15,7 @@ class WidgetList extends Component {
   render() {
     return(
       <div>
-        <h1>Widgets</h1>
+        <h1>Lesson: {this.props.lessonId}</h1>
         <button className="btn btn-primary save-button"
           hidden={this.props.previewMode} onClick={() => {this.props.save(this.props.lessonId, this.props.widgets)}}>
           Save
