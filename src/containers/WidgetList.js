@@ -16,11 +16,11 @@ class WidgetList extends Component {
     return(
       <div>
         <h1>Widgets</h1>
-        <button className="save-button"
+        <button className="btn btn-primary save-button"
           hidden={this.props.previewMode} onClick={() => {this.props.save(this.props.lessonId, this.props.widgets)}}>
           Save
         </button>
-        <button className="preview-button" onClick={this.props.preview}>
+        <button className="btn btn-primary preview-button" onClick={this.props.preview}>
           Preview
         </button>
         <ul>
@@ -34,7 +34,7 @@ class WidgetList extends Component {
             </div>
           ))}
         </ul>
-        <i className="fa fa-plus-circle" onClick={() => {this.props.addWidget(this.props.lessonId)}}></i>
+        <i className="fa fa-plus-square" onClick={() => {this.props.addWidget(this.props.lessonId)}}></i>
       </div>
     )
   }
