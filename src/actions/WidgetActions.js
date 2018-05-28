@@ -31,17 +31,25 @@ export const listTypeChanged = (dispatch, widgetId, newType) => (
 
 export const imageTextChanged = (dispatch, widgetId, newSrc) => (
   dispatch({
-    type: constants.IMAGE_SRC_CHANGE,
+    type: constants.IMAGE_SRC_CHANGED,
     id: widgetId,
     src: newSrc
   })
 )
 
-export const linkTextChanged = (dispatch, widgetId, newHref) => (
+export const linkHrefChanged = (dispatch, widgetId, newHref) => (
   dispatch({
     type: constants.LINK_HREF_CHANGED,
     id: widgetId,
     href: newHref
+  })
+)
+
+export const linkNameChanged = (dispatch, widgetId, newName) => (
+  dispatch({
+    type: constants.LINK_NAME_CHANGED,
+    id: widgetId,
+    text: newName
   })
 )
 
