@@ -34,7 +34,7 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
       return {
         widgets: state.widgets.map(widget => {
           if(widget.id === action.id) {
-            widget.list_items = action.list_items
+            widget.listItems = action.list_items
           }
           return Object.assign({}, widget)
         })
@@ -44,13 +44,14 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
       return {
         widgets: state.widgets.map(widget => {
           if(widget.id === action.id) {
-            widget.list_type = action.list_type
+            console.log(action.list_type)
+            widget.listType = action.list_type
           }
           return Object.assign({}, widget)
         })
       }
 
-    case constants.IMAGE_SRC_CHANGE:
+    case constants.IMAGE_SRC_CHANGED:
       return {
         widgets: state.widgets.map(widget => {
         if(widget.id === action.id) {
@@ -65,6 +66,16 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
        widgets: state.widgets.map(widget => {
        if(widget.id === action.id) {
          widget.href = action.href
+       }
+       return Object.assign({}, widget)
+       })
+     }
+
+    case constants.LINK_NAME_CHANGED:
+      return {
+       widgets: state.widgets.map(widget => {
+       if(widget.id === action.id) {
+         widget.text = action.text
        }
        return Object.assign({}, widget)
        })
@@ -124,7 +135,6 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
           ...state.widgets,
           {
             id: Math.max.apply(Math, state.widgets.map(widget => widget.id)) + 10,
-            text: 'New Widget',
             className: 'Heading',
             size: '1',
             lessonId: action.lessonId
@@ -145,12 +155,20 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
       return newState
 
     case constants.INCREMENT_ORDER:
-      console.log("heyyyy")
-
       return {
        widgets: state.widgets.map(widget => {
        if(widget.id === action.id) {
-         widget.widgetOrder = widget.widgetOrder + 1
+         widget.widgetOrder = action.order + 1
+       }
+       return Object.assign({}, widget)
+       })
+     }
+
+    case constants.DECREMENT_ORDER:
+      return {
+       widgets: state.widgets.map(widget => {
+       if(widget.id === action.id) {
+         widget.widgetOrder = action.order - 1
        }
        return Object.assign({}, widget)
        })
