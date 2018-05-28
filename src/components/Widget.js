@@ -1,6 +1,6 @@
 import React from  'react'
 import {connect} from 'react-redux'
-import {DELETE_WIDGET, INCREMENT_ORDER} from "../constants/WidgetConstants"
+import {DELETE_WIDGET, INCREMENT_ORDER, DECREMENT_ORDER} from "../constants/WidgetConstants"
 import * as actions from '../actions/WidgetActions'
 import '../styles/Widget.css';
 
@@ -11,9 +11,6 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged}) => {
     <div>
       <div hidden={preview}>
         <h2> Heading Widget </h2>
-          <input onChange={() => headingTextChanged(widget.id, inputElem.value)}
-                 value={widget.text}
-                 ref={node => inputElem = node}/>
           <select onChange={() => headingSizeChanged(widget.id, selectElem.value)}
                   value={widget.size}
                   ref={node => selectElem = node}>
@@ -21,6 +18,11 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged}) => {
             <option value="2">Heading 2</option>
             <option value="3">Heading 3</option>
           </select>
+          <div>
+          <input onChange={() => headingTextChanged(widget.id, inputElem.value)}
+               value={widget.text}
+               ref={node => inputElem = node}/>
+          </div>
           <h3>Preview</h3>
       </div>
       {widget.size == 1 && <h1>{widget.text}</h1>}
@@ -38,20 +40,22 @@ const List = ({widget, preview, listTextChanged, listTypeChanged}) => {
   <div>
     <div hidden={preview}>
       <h2> List Widget </h2>
-        <li>
-        <select onChange={() => listTypeChanged(widget.id, selectElem.value)}
-                value={widget.list_type}
-                ref={node => selectElem = node}>
-          <option value="Unordered List">Unordered List</option>
-          <option value="Ordered List">Ordered List</option>
-        </select>
-        <input onChange={() => listTextChanged(widget.id, inputElem.value)}
-               value={widget.list_items}
-               ref={node => inputElem = node}/> </li>
-
-        <h3>Preview</h3>
+      <select onChange={() => listTypeChanged(widget.id, selectElem.value)}
+              value={widget.listType}
+              ref={node => selectElem = node}>
+        <option value="unordered">Unordered List</option>
+        <option value="ordered">Ordered List</option>
+      </select>
+      <div>
+      <textarea onChange={() => listTextChanged(widget.id, inputElem.value)}
+              value={widget.list_items}
+              ref={node => inputElem = node}>
+      </textarea>
+      </div>
+      <h3>Preview</h3>
     </div>
-    {<li>{widget.text}</li>}
+    {widget.listItems ? widget.listItems.split("\n").forEach(item =>
+      <li>item</li>) : null}
   </div>
   )
 }
@@ -73,19 +77,23 @@ const Image = ({widget, preview, imageTextChanged}) => {
   )
 }
 
-const Link = ({widget, preview, linkTextChanged}) => {
-  let inputElem
+const Link = ({widget, preview, linkHrefChanged, linkNameChanged}) => {
+  let linkInputElem
+  let nameInputElem
 
   return(
     <div>
       <div hidden={preview}>
         <h2> Link Widget </h2>
-          <input onChange={() => linkTextChanged(widget.id, inputElem.value)}
+          <input placeholder="privetik" onChange={() => linkHrefChanged(widget.id, linkInputElem.value)}
                  value={widget.href}
-                 ref={node => inputElem = node}/>
+                 ref={node => linkInputElem = node}/>
+          <input onChange={() => linkNameChanged(widget.id, nameInputElem.value)}
+                 value={widget.text}
+                 ref={node => nameInputElem = node}/>
           <h3>Preview</h3>
       </div>
-        <a href={widget.href}/>
+        <a href={widget.href}>{widget.text}</a>
     </div>
   )
 }
@@ -97,7 +105,8 @@ const Paragraph = ({widget, preview, paragraphTextChanged}) => {
     <div>
       <div hidden={preview}>
         <h2>Paragraph Widget</h2>
-          <input onChange={() => paragraphTextChanged(widget.id, inputElem.value)}
+          <textarea placeholder="Add your paragraph text here"
+                 onChange={() => paragraphTextChanged(widget.id, inputElem.value)}
                  value={widget.text}
                  ref={node => inputElem = node}/>
           <h3>Preview</h3>
@@ -119,8 +128,10 @@ const dispathToPropsMapper = dispatch => ({
     actions.listTypeChanged(dispatch, widgetId, newType),
   imageTextChanged: (widgetId, newSrc) =>
     actions.imageTextChanged(dispatch, widgetId, newSrc),
-  linkTextChanged: (widgetId, newHref) =>
-    actions.imageTextChanged(dispatch, widgetId, newHref),
+  linkHrefChanged: (widgetId, newHref) =>
+    actions.linkHrefChanged(dispatch, widgetId, newHref),
+  linkNameChanged: (widgetId, newName) =>
+    actions.linkNameChanged(dispatch, widgetId, newName),
   paragraphTextChanged: (widgetId, newText) =>
     actions.paragraphTextChanged(dispatch, widgetId. newText)
 })
@@ -137,7 +148,7 @@ const Widget = ({widget, preview, dispatch}) => {
   let selectElement
   return(
     <div>
-      <div hidden={preview}>
+      <div hidden={preview} className="widget-heading">
       <select value={widget.className}
               onChange={e =>
           dispatch({
@@ -153,9 +164,11 @@ const Widget = ({widget, preview, dispatch}) => {
       </select>
 
       <i className="fa fa-chevron-up" onClick={e => (
-        dispatch({type: INCREMENT_ORDER, id: widget.id})
+        dispatch({type: DECREMENT_ORDER, id: widget.id, order: widget.widgetOrder})
       )}></i>
-      <i className="fa fa-chevron-down"></i>
+      <i className="fa fa-chevron-down" onClick={e => (
+        dispatch({type: INCREMENT_ORDER, id: widget.id, order: widget.widgetOrder})
+      )}></i>
       <i className="fa fa-times fa-2x deleteWidget" onClick={e => (
         dispatch({type: DELETE_WIDGET, id: widget.id})
       )}></i>
