@@ -37,6 +37,13 @@ export const imageTextChanged = (dispatch, widgetId, newSrc) => (
   })
 )
 
+export const linkTextChanged = (dispatch, widgetId, newHref) => (
+  dispatch({
+    type: constants.LINK_HREF_CHANGED,
+    id: widgetId,
+    href: newHref
+  })
+)
 
 export const findAllWidgets = dispatch => {
   fetch('http://localhost:8080/api/widget')
