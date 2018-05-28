@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import * as actions from "../actions/WidgetActions"
 import WidgetContainer from '../components/Widget'
+import '../styles/WidgetList.css';
 
 class WidgetList extends Component {
   constructor(props) {
@@ -14,28 +15,26 @@ class WidgetList extends Component {
   render() {
     return(
       <div>
-        <h1>Widget List {this.props.widgets.length}</h1>
-
-        <button hidden={this.props.previewMode} onClick={() => {this.props.save(this.props.lessonId, this.props.widgets)}}>
+        <h1>Widgets</h1>
+        <button className="save-button"
+          hidden={this.props.previewMode} onClick={() => {this.props.save(this.props.lessonId, this.props.widgets)}}>
           Save
         </button>
-        <button onClick={this.props.preview}>
+        <button className="preview-button" onClick={this.props.preview}>
           Preview
         </button>
-        <div>
-          {this.props.lessonId}
-        </div>
-
         <ul>
           {this.props.widgets.filter(w => w.lessonId == this.props.lessonId)
             .map(widget => (
+            <div>
             <WidgetContainer widget={widget}
                              preview={this.props.previewMode}
                              key={widget.id}/>
+            <hr />
+            </div>
           ))}
         </ul>
-        <button onClick={this.props.addWidget}>Add widget
-        </button>
+        <i className="fa fa-plus-circle" onClick={() => {this.props.addWidget(this.props.lessonId)}}></i>
       </div>
     )
   }
@@ -48,7 +47,7 @@ const stateToPropertiesMapper = (state) => ({
 const dispatcherToPropsMapper
   = dispatch => ({
   findAllWidgets: () => actions.findAllWidgets(dispatch),
-  addWidget: () => actions.addWidget(dispatch),
+  addWidget: (lessonId) => actions.addWidget(dispatch, lessonId),
   save: (lessonId, widgets) => actions.save(dispatch, lessonId, widgets),
   findAllWidgetsForLesson: (lessonId) => actions.findAllWidgetsForLesson(dispatch, lessonId),
   preview: () => actions.preview(dispatch)
