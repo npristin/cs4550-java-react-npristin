@@ -21,6 +21,15 @@ export const listTextChanged = (dispatch, widgetId, newText) => (
   })
 )
 
+export const listTypeChanged = (dispatch, widgetId, newType) => (
+  dispatch({
+    type: constants.LIST_TYPE_CHANGED,
+    id: widgetId,
+    list_type: newType
+  })
+)
+
+
 
 export const findAllWidgets = dispatch => {
   fetch('http://localhost:8080/api/widget')
