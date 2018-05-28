@@ -29,29 +29,6 @@ export const listTypeChanged = (dispatch, widgetId, newType) => (
   })
 )
 
-export const imageTextChanged = (dispatch, widgetId, newSrc) => (
-  dispatch({
-    type: constants.IMAGE_SRC_CHANGE,
-    id: widgetId,
-    src: newSrc
-  })
-)
-
-export const linkTextChanged = (dispatch, widgetId, newHref) => (
-  dispatch({
-    type: constants.LINK_HREF_CHANGED,
-    id: widgetId,
-    href: newHref
-  })
-)
-
-export const paragraphTextChanged = (dispatch, widgetId, newText) => (
-  dispatch({
-    type: constants.PARAGRAPH_TEXT_CHANGED,
-    id: widgetId,
-    text: newText
-  })
-)
 
 export const findAllWidgets = dispatch => {
   fetch('http://localhost:8080/api/widget')
