@@ -48,14 +48,14 @@ const List = ({widget, preview, listTextChanged, listTypeChanged}) => {
       </select>
       <div>
       <textarea onChange={() => listTextChanged(widget.id, inputElem.value)}
-              value={widget.list_items}
+              value={widget.listItems}
               ref={node => inputElem = node}>
       </textarea>
       </div>
       <h3>Preview</h3>
     </div>
-    {widget.listItems ? widget.listItems.split("\n").forEach(item =>
-      <li>item</li>) : null}
+    {(widget.listItems.split("\n")).map(item =>
+      <li>{item}</li>)}
   </div>
   )
 }
