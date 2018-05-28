@@ -125,8 +125,8 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
           {
             id: Math.max.apply(Math, state.widgets.map(widget => widget.id)) + 10,
             text: 'New Widget',
-            className: 'Paragraph',
-            size: '2',
+            className: 'Heading',
+            size: '1',
             lessonId: action.lessonId
           }
         ]
