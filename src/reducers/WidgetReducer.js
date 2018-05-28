@@ -30,12 +30,24 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
         })
       }
 
+    case constants.LIST_TEXT_CHANGED:
+      return {
+        widgets: state.widgets.map(widget => {
+          if(widget.id === action.id) {
+            widget.list_items = action.list_items
+          }
+          return Object.assign({}, widget)
+        })
+      }
+
+    
+
     case constants.SELECT_WIDGET_TYPE:
       console.log(action);
       let newState = {
         widgets: state.widgets.filter((widget) => {
           if(widget.id === action.id) {
-            widget.widgetType = action.widgetType
+            widget.className = action.widgetType
           }
           return true;
         })
@@ -69,17 +81,20 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
       }
 
     case constants.ADD_WIDGET:
-      return {
-        widgets: [
+      newState = Object.assign({}, state)
+      newState.widgets = [
           ...state.widgets,
           {
-            id: state.widgets.length + 10,
+            id: Math.max.apply(Math, state.widgets.map(widget => widget.id)) + 10,
             text: 'New Widget',
-            widgetType: 'Paragraph',
-            size: '2'
+            className: 'Paragraph',
+            size: '2',
+            lessonId: action.lessonId
           }
         ]
-      }
+      console.log(newState)
+      return newState
+
     case constants.FIND_ALL_WIDGETS_FOR_LID:
       newState = Object.assign({}, state)
       newState.lessonId = action.lessonId
