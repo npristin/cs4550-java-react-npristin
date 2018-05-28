@@ -1,0 +1,19 @@
+.fa-chevron-up {
+  color: #CE44E3;
+  margin-left: 30px;
+  font-size: 25px;
+  right: 0;
+  margin-right: 80px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.fa-chevron-down {
+  color: #CE44E3;
+  margin-right: 10px;
+  font-size: 25px;
+  right: 0;
+  margin-right: 60px;
+  position: absolute;
+  cursor: pointer;
+}
