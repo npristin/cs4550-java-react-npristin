@@ -144,6 +144,18 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
       newState.lessonId = action.lessonId
       return newState
 
+    case constants.INCREMENT_ORDER:
+      console.log("heyyyy")
+
+      return {
+       widgets: state.widgets.map(widget => {
+       if(widget.id === action.id) {
+         widget.widgetOrder = widget.widgetOrder + 1
+       }
+       return Object.assign({}, widget)
+       })
+     }
+
     default:
       return state
   }
