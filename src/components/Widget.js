@@ -61,8 +61,12 @@ const List = ({widget, preview, listTextChanged, listTypeChanged}) => {
       <h3>Preview</h3>
     </div>
     <div className="list-items">
-    {widget.listItems ? (widget.listItems.split("\n")).map(item =>
+    <ol>{widget.listItems && widget.listType == "ordered" ? (widget.listItems.split("\n")).map(item =>
+      <li>{item}</li>) : null}</ol>
+    {widget.listItems && (widget.listType == "unordered"
+      || widget.listType == null) ? (widget.listItems.split("\n")).map(item =>
       <li>{item}</li>) : null}
+
     </div>
   </div>
   )
