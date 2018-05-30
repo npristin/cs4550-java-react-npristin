@@ -157,24 +157,36 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
       return newState
 
     case constants.INCREMENT_ORDER:
-      return {
-       widgets: state.widgets.map(widget => {
-       if(widget.id === action.id) {
-         widget.widgetOrder = action.order + 1
-       }
-       return Object.assign({}, widget)
-       })
-     }
+      newState = Object.assign({}, state)
+
+      fetch('https://cs4550-java-server-npristin.herokuapp.com/api/lesson/LID/widget/WID/order/increment'
+        .replace('WID', action.widgetId)
+        .replace('LID', action.lessonId), {
+        method: 'post',
+        credentials: 'same-origin',
+        body: JSON.stringify(state.widgets),
+        headers: {
+          'content-type': 'application/json'}
+      }).then(response => (response.json()))
+        .then(widgets => newState.widgets = widgets)
+
+      return newState
 
     case constants.DECREMENT_ORDER:
-      return {
-       widgets: state.widgets.map(widget => {
-       if(widget.id === action.id) {
-         widget.widgetOrder = action.order - 1
-       }
-       return Object.assign({}, widget)
-       })
-     }
+      newState = Object.assign({}, state)
+
+      fetch('https://cs4550-java-server-npristin.herokuapp.com/api/lesson/LID/widget/WID/order/decrement'
+        .replace('WID', action.widgetId)
+        .replace('LID', action.lessonId), {
+        method: 'post',
+        credentials: 'same-origin',
+        body: JSON.stringify(state.widgets),
+        headers: {
+          'content-type': 'application/json'}
+      }).then(response => (response.json()))
+        .then(widgets => newState.widgets = widgets)
+
+      return newState
 
     default:
       return state

@@ -186,10 +186,10 @@ const Widget = ({widget, preview, dispatch}) => {
       </select>
 
       <i className="fa fa-chevron-up" onClick={e => (
-        dispatch({type: DECREMENT_ORDER, id: widget.id, order: widget.widgetOrder})
+        dispatch({type: DECREMENT_ORDER, lessonId: widget.lessonId, widgetId: widget.id})
       )}></i>
       <i className="fa fa-chevron-down" onClick={e => (
-        dispatch({type: INCREMENT_ORDER, id: widget.id, order: widget.widgetOrder})
+        dispatch({type: INCREMENT_ORDER, lessonId: widget.lessonId, widgetId: widget.id})
       )}></i>
       <i className="fa fa-times fa-2x deleteWidget" onClick={e => (
         dispatch({type: DELETE_WIDGET, id: widget.id})
