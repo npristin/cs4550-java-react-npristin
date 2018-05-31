@@ -1,8 +1,8 @@
 .fa-chevron-up {
-  color: #CE44E3;
+  color: orange;
   margin-left: 30px;
   font-size: 25px;
-  right: 0;
+  right: 10;
   margin-right: 20px;
   margin-left: 10px;
   position: absolute;
@@ -10,18 +10,18 @@
 }
 
 .fa-chevron-down {
-  color: #CE44E3;
-  margin-right: 10px;
+  color: orange;
   font-size: 25px;
   right: 0;
   margin-right: 40px;
   position: absolute;
   cursor: pointer;
+  padding-left: 30px;
 }
 
 .widget-heading {
   float: right;
-  margin-right: 50px;
+  margin-right: 80px;
 }
 
 .text-area {
@@ -30,4 +30,10 @@
 
 .list-items {
   margin-left: 50px;
+}
+
+.deleteWidget {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
 }
