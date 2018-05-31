@@ -61,6 +61,26 @@ export const WidgetReducer = (state = {widgets: [], preview: false, lessonId: ''
         })
       }
 
+    case constants.IMAGE_WIDTH_CHANGED:
+      return {
+        widgets: state.widgets.map(widget => {
+        if(widget.id === action.id) {
+          widget.width = action.width
+        }
+        return Object.assign({}, widget)
+        })
+      }
+
+    case constants.IMAGE_HEIGHT_CHANGED:
+      return {
+        widgets: state.widgets.map(widget => {
+        if(widget.id === action.id) {
+          widget.height = action.height
+        }
+        return Object.assign({}, widget)
+        })
+      }
+
     case constants.LINK_HREF_CHANGED:
       return {
        widgets: state.widgets.map(widget => {

@@ -37,6 +37,22 @@ export const imageTextChanged = (dispatch, widgetId, newSrc) => (
   })
 )
 
+export const imageWidthChanged = (dispatch, widgetId, newWidth) => (
+  dispatch({
+    type: constants.IMAGE_WIDTH_CHANGED,
+    id: widgetId,
+    width: newWidth
+  })
+)
+
+export const imageHeightChanged = (dispatch, widgetId, newHeight) => (
+  dispatch({
+    type: constants.IMAGE_HEIGHT_CHANGED,
+    id: widgetId,
+    height: newHeight
+  })
+)
+
 export const linkHrefChanged = (dispatch, widgetId, newHref) => (
   dispatch({
     type: constants.LINK_HREF_CHANGED,

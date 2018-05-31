@@ -51,29 +51,31 @@ const List = ({widget, preview, listTextChanged, listTypeChanged}) => {
         <option value="ordered">Ordered List</option>
       </select>
       <div className="text-area">
-      <textarea className="form-control"
+        <textarea className="form-control"
               placeholder="Enter one list item per line"
               onChange={() => listTextChanged(widget.id, inputElem.value)}
               value={widget.listItems}
               ref={node => inputElem = node}>
-      </textarea>
+        </textarea>
       </div>
       <h3>Preview</h3>
     </div>
     <div className="list-items">
-    <ol>{widget.listItems && widget.listType == "ordered" ? (widget.listItems.split("\n")).map(item =>
-      <li>{item}</li>) : null}</ol>
-    {widget.listItems && (widget.listType == "unordered"
-      || widget.listType == null) ? (widget.listItems.split("\n")).map(item =>
-      <li>{item}</li>) : null}
+      <ol>{widget.listItems && widget.listType == "ordered" ? (widget.listItems.split("\n")).map(item =>
+        <li>{item}</li>) : null}</ol>
+      {widget.listItems && (widget.listType == "unordered"
+        || widget.listType == null) ? (widget.listItems.split("\n")).map(item =>
+        <li>{item}</li>) : null}
 
     </div>
   </div>
   )
 }
 
-const Image = ({widget, preview, imageTextChanged}) => {
+const Image = ({widget, preview, imageTextChanged, imageWidthChanged, imageHeightChanged}) => {
   let inputElem
+  let widthInputElem
+  let heightInputElem
 
   return(
     <div className="container-fluid">
@@ -84,9 +86,23 @@ const Image = ({widget, preview, imageTextChanged}) => {
                  onChange={() => imageTextChanged(widget.id, inputElem.value)}
                  value={widget.src}
                  ref={node => inputElem = node}/>
+          <div className="text-area">
+            <input className="form-control"
+                 placeholder="Image Width"
+                 onChange={() => imageWidthChanged(widget.id, widthInputElem.value)}
+                 value={widget.width}
+                 ref={node => widthInputElem = node}/>
+          </div>
+          <div className="text-area">
+            <input className="form-control"
+                 placeholder="Image Height"
+                 onChange={() => imageHeightChanged(widget.id, heightInputElem.value)}
+                 value={widget.height}
+                 ref={node => heightInputElem = node}/>
+          </div>
           <h3>Preview</h3>
       </div>
-        <img src={widget.src}/>
+        <img src={widget.src} width={widget.width} height={widget.height}/>
     </div>
   )
 }
@@ -104,7 +120,7 @@ const Link = ({widget, preview, linkHrefChanged, linkNameChanged}) => {
                  value={widget.href}
                  ref={node => linkInputElem = node}/>
           <div className="text-area">
-          <input className="form-control"
+            <input className="form-control"
                  placeholder="Link text"
                  onChange={() => linkNameChanged(widget.id, nameInputElem.value)}
                  value={widget.text}
@@ -149,6 +165,10 @@ const dispathToPropsMapper = dispatch => ({
     actions.listTypeChanged(dispatch, widgetId, newType),
   imageTextChanged: (widgetId, newSrc) =>
     actions.imageTextChanged(dispatch, widgetId, newSrc),
+  imageWidthChanged: (widgetId, newWidth) =>
+    actions.imageWidthChanged(dispatch, widgetId, newWidth),
+  imageHeightChanged: (widgetId, newHeight) =>
+    actions.imageHeightChanged(dispatch, widgetId, newHeight),
   linkHrefChanged: (widgetId, newHref) =>
     actions.linkHrefChanged(dispatch, widgetId, newHref),
   linkNameChanged: (widgetId, newName) =>
