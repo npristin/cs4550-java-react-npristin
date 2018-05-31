@@ -2,7 +2,7 @@
   color: orange;
   margin-left: 30px;
   font-size: 25px;
-  right: 10;
+  right: 5;
   margin-right: 20px;
   margin-left: 10px;
   position: absolute;
@@ -16,7 +16,6 @@
   margin-right: 40px;
   position: absolute;
   cursor: pointer;
-  padding-left: 30px;
 }
 
 .widget-heading {

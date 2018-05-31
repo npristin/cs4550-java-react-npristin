@@ -170,30 +170,35 @@ const Widget = ({widget, preview, dispatch}) => {
   return(
     <div>
       <div hidden={preview} className="widget-heading">
-      <select
-              value={widget.className}
-              onChange={e =>
-          dispatch({
-            type: 'SELECT_WIDGET_TYPE',
-            id: widget.id,
-            widgetType: selectElement.value
-          })} ref={node => selectElement = node}>
-        <option>Heading</option>
-        <option>Paragraph</option>
-        <option>List</option>
-        <option>Image</option>
-        <option>Link</option>
-      </select>
-
-      <i className="fa fa-chevron-up" onClick={e => (
-        dispatch({type: DECREMENT_ORDER, lessonId: widget.lessonId, widgetId: widget.id})
-      )}></i>
-      <i className="fa fa-chevron-down" onClick={e => (
-        dispatch({type: INCREMENT_ORDER, lessonId: widget.lessonId, widgetId: widget.id})
-      )}></i>
-      <i className="fa fa-times fa-2x deleteWidget" onClick={e => (
-        dispatch({type: DELETE_WIDGET, id: widget.id})
-      )}></i>
+        <select
+                value={widget.className}
+                onChange={e =>
+            dispatch({
+              type: 'SELECT_WIDGET_TYPE',
+              id: widget.id,
+              widgetType: selectElement.value
+            })} ref={node => selectElement = node}>
+          <option>Heading</option>
+          <option>Paragraph</option>
+          <option>List</option>
+          <option>Image</option>
+          <option>Link</option>
+        </select>
+        <span>
+          <i className="fa fa-chevron-up" onClick={e => (
+            dispatch({type: DECREMENT_ORDER, lessonId: widget.lessonId, widgetId: widget.id})
+          )}></i>
+        </span>
+        <span>
+          <i className="fa fa-chevron-down" onClick={e => (
+            dispatch({type: INCREMENT_ORDER, lessonId: widget.lessonId, widgetId: widget.id})
+          )}></i>
+        </span>
+        <span>
+          <i className="fa fa-times fa-2x deleteWidget" onClick={e => (
+            dispatch({type: DELETE_WIDGET, id: widget.id})
+          )}></i>
+        </span>
       </div>
       <div>
         {widget.className==='Heading' && <HeadingContainer widget={widget}/>}
