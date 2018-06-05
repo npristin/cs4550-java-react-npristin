@@ -9,6 +9,6 @@ Courses Page: [Courses](https://cs4550-s1-2018-react-npristin.herokuapp.com/cour
 All other pages can be accessed through the courses page.
 
 ## Links to Related Github Repositories
-Java Middle Tier (Assignment 1): [Jave Middle Tier](https://github.com/npristin/cs4550-java-server-npristin)
+Java Middle Tier (Assignment 1): [Java Middle Tier](https://github.com/npristin/cs4550-java-server-npristin)
 
 React Native Client (Assignment 4): [React Native Client](https://github.com/npristin/cs4500-react-native-npristin)
