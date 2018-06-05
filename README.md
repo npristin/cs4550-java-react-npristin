@@ -1,4 +1,4 @@
-# CS 4500 - Web Development
+# CS 4550 - Web Development
 Assignment 2 + 3 Repository - React Client
 
 By: Nicole Pristin
