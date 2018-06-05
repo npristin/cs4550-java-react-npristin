@@ -1,5 +1,5 @@
 # CS 4500 - Web Development
-Assignment 2 Repository - React Server
+Assignment 2 + 3 Repository - React Server
 
 By: Nicole Pristin
 
