@@ -24,7 +24,9 @@ class WidgetList extends Component {
           Preview
         </button>
         <ul>
-          {this.props.widgets.filter(w => w.lessonId == this.props.lessonId && w.className != null)
+          {this.props.widgets.filter(w => w.lessonId == this.props.lessonId &&
+            (w.className === 'Paragraph' || w.className === 'Heading' || w.className === 'Link' || w.className === 'Image'
+              || w.className === 'List'))
             .map(widget => (
             <div>
             <WidgetContainer widget={widget}
